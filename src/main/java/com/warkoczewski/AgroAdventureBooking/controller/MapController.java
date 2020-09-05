@@ -5,6 +5,8 @@ import com.warkoczewski.AgroAdventureBooking.repository.PointRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MapController {
@@ -27,8 +29,8 @@ public class MapController {
         return "map";
     }
 
-    @GetMapping("/markers/region")
-    public String getFarmByRegion(String region, Model model){
+    @GetMapping("/markers/{region}")
+    public String getFarmByRegion(@PathVariable("region") String region, Model model){
         model.addAttribute("points", pointRepository.findPointByRegion(region));
         return "map";
     }

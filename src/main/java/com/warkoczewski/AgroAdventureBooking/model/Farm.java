@@ -3,10 +3,14 @@ package com.warkoczewski.AgroAdventureBooking.model;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class Farm {
-
+    @Id
     private Long id;
     private String name;
     private String description;

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Farm</title>
+</head>
+<body>
+<h1>The farm you looking for</h1>
+<script th:inline="javascript">
+
+    var farm = [[${farm}]];
+    document.write(farm.name);
+    document.write(farm.description);
+
+</script>
+</body>
+</html>

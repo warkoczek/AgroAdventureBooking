@@ -20,7 +20,7 @@ class FarmServiceImplTest {
 
 
     @Test
-    void showFarmsByNamePhraseShouldReturnListSize2ForPhraseWild() {
+    void showFarmsByNamePhraseShouldReturnListSize2ForPhraseLand() {
         //given
         String phrase = "land";
         int expectedListSize = 2;

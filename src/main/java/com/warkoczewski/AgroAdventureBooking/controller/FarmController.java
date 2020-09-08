@@ -4,7 +4,7 @@ import com.warkoczewski.AgroAdventureBooking.model.Farm;
 import com.warkoczewski.AgroAdventureBooking.service.FarmService;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,6 +27,7 @@ public class FarmController {
         ModelAndView modelAndView = new ModelAndView("searchFarms");
 
         List<Farm> farmsByPhrase = farmService.showFarmsByNamePhrase(phrase);
+        modelAndView.addObject("farms", farmsByPhrase);
         return modelAndView;
     }
     @GetMapping(Mappings.FARM)

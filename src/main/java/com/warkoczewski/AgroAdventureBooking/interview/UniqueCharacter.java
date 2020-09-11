@@ -5,31 +5,32 @@ public class UniqueCharacter {
 
     public static void main(String[] args){
 
-        System.out.println(getCharacter("georatele"));
+        System.out.println(getFirstUniqueCharacterIndex("georatele"));
 
     }
 
-    public static int getCharacter(String text){
-
-            int[] characters = new int[26];
+    public static int getFirstUniqueCharacterIndex(String text){
 
             if(text == null || text.isEmpty()){
                 return -1;
             }
 
-            for(int i=0; i < text.length(); i++){
-                characters[text.charAt(i) - 'a']++;
-            }
+            int[] characters = getInts(text);
 
             for(int i=0; i < text.length(); i++){
                 if(characters[text.charAt(i) - 'a'] == 1){
                     return i;
                 }
             }
-
-
-        return -1;
+            return -1;
     }
 
-    
+    private static int[] getInts(String text) {
+        int[] characters = new int[26];
+
+        for(int i=0; i < text.length(); i++){
+            characters[text.charAt(i) - 'a']++;
+        }
+        return characters;
+    }
 }

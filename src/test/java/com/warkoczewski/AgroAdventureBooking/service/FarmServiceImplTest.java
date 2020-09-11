@@ -18,7 +18,6 @@ class FarmServiceImplTest {
     private  FarmService sut;
 
 
-
     @Test
     void showFarmsByNamePhraseShouldReturnListSize2ForPhraseLand() {
         //given

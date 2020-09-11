@@ -1,6 +1,7 @@
 package com.warkoczewski.AgroAdventureBooking.controller;
 
 import com.warkoczewski.AgroAdventureBooking.model.Farm;
+import com.warkoczewski.AgroAdventureBooking.service.FarmService;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
 import org.springframework.stereotype.Controller;
 

@@ -12,7 +12,7 @@ import java.util.List;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-class FarmServiceImplTest {
+public class FarmServiceImplTest {
 
     @Autowired
     private  FarmService sut;

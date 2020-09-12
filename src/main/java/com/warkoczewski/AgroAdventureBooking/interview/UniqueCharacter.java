@@ -5,7 +5,7 @@ public class UniqueCharacter {
 
     public static void main(String[] args){
 
-        System.out.println(getFirstUniqueCharacterIndex("georatele"));
+        System.out.println(getFirstUniqueCharacterIndex("eeoratele"));
 
     }
 

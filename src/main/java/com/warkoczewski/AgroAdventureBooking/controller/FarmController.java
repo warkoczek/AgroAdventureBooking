@@ -5,8 +5,8 @@ import com.warkoczewski.AgroAdventureBooking.service.FarmService;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
 import org.springframework.stereotype.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -22,8 +22,8 @@ public class FarmController {
     }
 
 
-    @GetMapping(Mappings.SEARCH_FARMS)
-    public ModelAndView searchFarmByNamePhrase(@PathVariable("phrase") String phrase){
+    @GetMapping(value = Mappings.SEARCH_FARMS)
+    public ModelAndView searchFarmByNamePhrase(@RequestParam(defaultValue = "*") String phrase){
 
         ModelAndView modelAndView = new ModelAndView("searchFarms");
 

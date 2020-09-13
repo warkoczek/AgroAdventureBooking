@@ -6,6 +6,11 @@
 </head>
 <body>
 <h1>Find your farm</h1>
-<input th:inline="javascript" type="text" id="mySearch" placeholder="Search farms....">
+
+<script th:inline="javascript">
+    var farms = [[${farms}]];
+
+    farms.forEach(value => document.write(value.name));
+</script>
 </body>
 </html>

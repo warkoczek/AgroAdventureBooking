@@ -21,17 +21,20 @@ public class FarmController {
         this.farmService = farmService;
     }
 
+
     @GetMapping(Mappings.SEARCH_FARMS)
-    public ModelAndView searchFarmByNamePhrase(String phrase){
+    public ModelAndView searchFarmByNamePhrase(@PathVariable("phrase") String phrase){
 
         ModelAndView modelAndView = new ModelAndView("searchFarms");
 
         List<Farm> farmsByPhrase = farmService.showFarmsByNamePhrase(phrase);
         modelAndView.addObject("farms", farmsByPhrase);
+
         return modelAndView;
     }
     @GetMapping(Mappings.FARM)
     public ModelAndView getFarmByName(@PathVariable("name") String name){
+
         ModelAndView modelAndView = new ModelAndView("farm");
 
         Optional<Farm> farm = farmService.showFarmByName(name);

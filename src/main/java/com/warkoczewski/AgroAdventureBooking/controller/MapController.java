@@ -1,6 +1,6 @@
 package com.warkoczewski.AgroAdventureBooking.controller;
 
-import com.warkoczewski.AgroAdventureBooking.model.Point;
+import com.warkoczewski.AgroAdventureBooking.model.Location;
 import com.warkoczewski.AgroAdventureBooking.repository.PointRepository;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
 import com.warkoczewski.AgroAdventureBooking.util.ViewNames;
@@ -21,7 +21,7 @@ public class MapController {
 
     @GetMapping(Mappings.MARKER)
     public String getMap(Model model){
-        model.addAttribute("point", new Point(54.51, 18.53, "Hello Wild Bull", "Pomorskie"));
+        model.addAttribute("point", new Location(1L, 54.51, 18.53, "Hello Wild Bull"));
         return ViewNames.MAP_TEST_MARKER;
     }
 

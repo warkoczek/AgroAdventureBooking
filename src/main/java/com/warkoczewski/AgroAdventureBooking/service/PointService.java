@@ -1,6 +1,6 @@
 package com.warkoczewski.AgroAdventureBooking.service;
 
-import com.warkoczewski.AgroAdventureBooking.model.Point;
+import com.warkoczewski.AgroAdventureBooking.model.Location;
 import com.warkoczewski.AgroAdventureBooking.repository.PointRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +16,11 @@ public class PointService {
         this.pointRepository = pointRepository;
     }
 
-    public List<Point> showAll(){
+    public List<Location> showAll(){
         return pointRepository.findAll();
     }
 
-    public List<Point> showFarmsByRegion(String region){
+    public List<Location> showFarmsByRegion(String region){
         return pointRepository.findPointByRegion(region);
     }
 }

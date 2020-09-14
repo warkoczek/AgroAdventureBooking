@@ -1,7 +1,7 @@
 package com.warkoczewski.AgroAdventureBooking.controller;
 
 import com.warkoczewski.AgroAdventureBooking.model.Location;
-import com.warkoczewski.AgroAdventureBooking.repository.PointRepository;
+import com.warkoczewski.AgroAdventureBooking.repository.LocationRepository;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
 import com.warkoczewski.AgroAdventureBooking.util.ViewNames;
 import org.springframework.stereotype.Controller;
@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class MapController {
 
-    private final PointRepository pointRepository;
+    private final LocationRepository locationRepository;
 
-    public MapController(PointRepository pointRepository) {
-        this.pointRepository = pointRepository;
+    public MapController(LocationRepository locationRepository) {
+        this.locationRepository = locationRepository;
     }
 
     @GetMapping(Mappings.MARKER)
@@ -27,15 +27,10 @@ public class MapController {
 
     @GetMapping(Mappings.MARKERS)
     public String getAllFarms(Model model){
-        model.addAttribute("points", pointRepository.findAll());
+        model.addAttribute("points", locationRepository.findAll());
         return ViewNames.MAP;
     }
 
-    @GetMapping(Mappings.MARKERS_REGION)
-    public String getFarmByRegion(@PathVariable("region") String region, Model model){
-        model.addAttribute("points", pointRepository.findPointByRegion(region));
-        return ViewNames.MAP;
-    }
 
 
 }

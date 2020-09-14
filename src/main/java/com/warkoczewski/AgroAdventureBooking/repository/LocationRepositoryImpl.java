@@ -7,15 +7,15 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Repository
-public class PointRepositoryImpl implements PointRepository {
+public class LocationRepositoryImpl implements LocationRepository {
 
     private final Set<Location> locations;
 
-    public PointRepositoryImpl() {
+    public LocationRepositoryImpl() {
         this.locations = new HashSet<>();
-        locations.add(new Location(52.78, 17.54, "Agro Warkocz - chickens", "Kujawsko-Pomorskie"));
-        locations.add(new Location(49.88, 20.12, "Mustang-Farm - horses", "Malopolskie"));
-        locations.add(new Location(54.51, 18.53, "Hello Wild Bull", "Pomorskie"));
+        locations.add(new Location(1L, 52.78, 17.54, "Agro Warkocz - chickens"));
+        locations.add(new Location(2L, 49.88, 20.12, "Mustang-Farm - horses"));
+        locations.add(new Location(3L, 54.51, 18.53, "Hello Wild Bull"));
     }
 
     @Override
@@ -28,10 +28,5 @@ public class PointRepositoryImpl implements PointRepository {
         return locations.stream().filter(point -> point.getName().equalsIgnoreCase(name)).findFirst();
     }
 
-    @Override
-    public List<Location> findPointByRegion(String region) {
 
-        return locations.stream()
-                .filter(point -> point.getRegion().equalsIgnoreCase(region)).collect(Collectors.toList());
-    }
 }

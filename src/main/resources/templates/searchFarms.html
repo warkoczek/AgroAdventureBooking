@@ -5,7 +5,15 @@
     <title>Searching engine</title>
 </head>
 <body>
-<h1>Find your farm</h1>
-<input th:inline="javascript" type="text" id="mySearch" placeholder="Search farms....">
+<h1>Search for farms</h1>
+<form action="" method="get">
+<input type="text" name="phrase" id="myInput" placeholder="Search for farms">
+    <button type="submit" value="Submit">Submit</button></br></br>
+
+<script th:inline="javascript">
+    var farms = [[${farms}]];
+    farms.forEach(value => document.write("\n" + value.name));
+</script>
+</form>
 </body>
 </html>

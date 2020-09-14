@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 @Controller
-public class MapController {
+public class LocationController {
 
     private final LocationRepository locationRepository;
 
-    public MapController(LocationRepository locationRepository) {
+    public LocationController(LocationRepository locationRepository) {
         this.locationRepository = locationRepository;
     }
 

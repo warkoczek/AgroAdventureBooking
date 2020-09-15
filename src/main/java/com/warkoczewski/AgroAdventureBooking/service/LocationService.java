@@ -20,5 +20,7 @@ public class LocationService {
         return locationRepository.findAll();
     }
 
-
+    public Long createLocation(Location location){
+        return locationRepository.addLocation(location);
+    }
 }

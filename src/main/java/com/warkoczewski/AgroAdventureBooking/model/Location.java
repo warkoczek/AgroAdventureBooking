@@ -1,10 +1,13 @@
 package com.warkoczewski.AgroAdventureBooking.model;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import java.util.Objects;
 
 @NoArgsConstructor
@@ -13,10 +16,13 @@ import java.util.Objects;
 public class Location {
 
     @Id
+    @GeneratedValue(generator = "locationSeq")
+    @SequenceGenerator(name = "locationSeq", sequenceName = "location_Seq", allocationSize = 1)
     private Long loc_Id;
 
     private double lat;
     private double lon;
+    @NotNull
     private String greeting;
 
     public Long getLoc_Id() {

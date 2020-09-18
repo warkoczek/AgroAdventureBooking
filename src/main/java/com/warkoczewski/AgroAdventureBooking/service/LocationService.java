@@ -3,6 +3,7 @@ package com.warkoczewski.AgroAdventureBooking.service;
 import com.warkoczewski.AgroAdventureBooking.exception.DuplicateCoordinatesException;
 import com.warkoczewski.AgroAdventureBooking.model.Location;
 import com.warkoczewski.AgroAdventureBooking.repository.LocationRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +13,11 @@ import java.util.List;
 public class LocationService {
 
     private final LocationRepository locationRepository;
+    private final ModelMapper modelMapper;
 
-    public LocationService(LocationRepository locationRepository) {
+    public LocationService(LocationRepository locationRepository, ModelMapper modelMapper) {
         this.locationRepository = locationRepository;
+        this.modelMapper = modelMapper;
     }
 
     public List<Location> showAll(){

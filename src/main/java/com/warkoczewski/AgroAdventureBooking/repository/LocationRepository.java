@@ -9,7 +9,6 @@ import java.util.Optional;
 public interface LocationRepository extends JpaRepository<Location, Long> {
 
     List<Location> findAll();
-    Optional<Location> findPointByName(String name);
     Optional<Location> findPointByLatAndLon(Double lat, Double lon);
 
 }

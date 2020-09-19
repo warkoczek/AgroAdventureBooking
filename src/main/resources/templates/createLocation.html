@@ -8,13 +8,13 @@
 </head>
 <body>
 <h1>Create a new location</h1>
-<!--/*@thymesVar id="location" type="com.warkoczewski.AgroAdventureBooking.model.Location"*/-->
-<form action="#" method="post" th:action= "@{/createLocation}" th:object="${location}">
+<!--/*@thymesVar id="location" type="com.warkoczewski.AgroAdventureBooking.dto.LocationDTO"*/-->
+<form action="#" method="post" th:action= "@{/createLocation}" th:object="${locationDTO}">
 <legend>New Location</legend>
 <fieldset>
-    <label>Latitude<input th:type="number" th:field="${location.lat}"/></label>
-    <label>Longitude<input th:type="number" th:field="${location.lon}"/></label>
-    <label>Greeting<input th:type="text" th:field="${location.greeting}"/></label>
+    <label>Latitude<input th:type="number" th:field="${locationDTO.lat}"/></label>
+    <label>Longitude<input th:type="number" th:field="${locationDTO.lon}"/></label>
+    <label>Greeting<input th:type="text" th:field="${locationDTO.greeting}"/></label>
     <p>
         <button type="submit" value="Add">Add Location</button>
         <button type="reset" value="Reset">Reset</button>

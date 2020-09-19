@@ -1,12 +1,13 @@
 package com.warkoczewski.AgroAdventureBooking.controller;
 
+import com.warkoczewski.AgroAdventureBooking.dto.LocationDTO;
 import com.warkoczewski.AgroAdventureBooking.model.Location;
-import com.warkoczewski.AgroAdventureBooking.repository.LocationRepository;
-import com.warkoczewski.AgroAdventureBooking.service.LocationService;
+import com.warkoczewski.AgroAdventureBooking.service.LocationServiceImpl;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
 import com.warkoczewski.AgroAdventureBooking.util.ViewNames;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,10 +17,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LocationController {
 
-    private final LocationService locationService;
+    private final LocationServiceImpl locationServiceImpl;
 
-    public LocationController(LocationService locationService) {
-        this.locationService = locationService;
+    public LocationController(LocationServiceImpl locationServiceImpl) {
+        this.locationServiceImpl = locationServiceImpl;
     }
 
     @GetMapping(Mappings.MARKER)
@@ -30,21 +31,23 @@ public class LocationController {
 
     @GetMapping(Mappings.MARKERS)
     public String getAllFarms(Model model){
-        model.addAttribute("points", locationService.showAll());
+        model.addAttribute("points", locationServiceImpl.showAll());
         return ViewNames.MAP;
     }
 
     @GetMapping(Mappings.CREATE_LOCATION)
-        public String getPage(){
+        public String getLocationCreationPage(Model model){
+            model.addAttribute("locationData", new LocationDTO());
             return "createLocation";
         }
-   /* @PostMapping("/createLocation")
-    public ModelAndView createLocation(@ModelAttribute("location") Location location, ModelAndView modelAndView){
-        modelAndView.setViewName("locationCreated");
-        Long locationId = locationService.createLocation(location);
-        modelAndView.addObject("message", "Location created successfully with this id: " + locationId);
-        return modelAndView;
-    }*/
+   @PostMapping(Mappings.CREATE_LOCATION)
+    public String createLocation(@ModelAttribute("locationDTO") LocationDTO locationData, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "createLocation";
+        }
+        locationServiceImpl.createLocation(locationData);
+        return "createLocation";
+    }
 
 
 

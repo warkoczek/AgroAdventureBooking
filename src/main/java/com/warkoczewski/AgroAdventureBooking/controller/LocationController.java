@@ -2,7 +2,7 @@ package com.warkoczewski.AgroAdventureBooking.controller;
 
 import com.warkoczewski.AgroAdventureBooking.dto.LocationDTO;
 import com.warkoczewski.AgroAdventureBooking.model.Location;
-import com.warkoczewski.AgroAdventureBooking.service.LocationServiceImpl;
+import com.warkoczewski.AgroAdventureBooking.service.impl.LocationServiceImpl;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
 import com.warkoczewski.AgroAdventureBooking.util.ViewNames;
 import org.springframework.stereotype.Controller;
@@ -11,7 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller

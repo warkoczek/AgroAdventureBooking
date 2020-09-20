@@ -1,9 +1,10 @@
-package com.warkoczewski.AgroAdventureBooking.service;
+package com.warkoczewski.AgroAdventureBooking.service.impl;
 
 import com.warkoczewski.AgroAdventureBooking.dto.LocationDTO;
 import com.warkoczewski.AgroAdventureBooking.exception.DuplicateCoordinatesException;
 import com.warkoczewski.AgroAdventureBooking.model.Location;
 import com.warkoczewski.AgroAdventureBooking.repository.LocationRepository;
+import com.warkoczewski.AgroAdventureBooking.service.LocationService;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;

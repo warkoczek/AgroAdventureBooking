@@ -4,5 +4,5 @@ import com.warkoczewski.AgroAdventureBooking.dto.RegistrationDataDTO;
 
 public interface RegistrationService {
 
-    void register(RegistrationDataDTO registrationData);
+    void register( RegistrationDataDTO registrationData);
 }

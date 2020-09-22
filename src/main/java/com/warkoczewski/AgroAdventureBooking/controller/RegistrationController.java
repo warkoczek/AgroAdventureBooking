@@ -17,7 +17,7 @@ public class RegistrationController {
         this.registrationService = registrationService;
     }
 
-    @GetMapping(Mappings.REGISTER_PAGE)
+    @GetMapping(Mappings.REGISTRATION_FORM)
     public String getRegistrationPage(){
         return ViewNames.REGISTRATION_FORM;
     }

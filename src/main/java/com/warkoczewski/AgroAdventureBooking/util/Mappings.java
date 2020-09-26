@@ -9,7 +9,7 @@ public final  class Mappings {
     public static final String SEARCH_FARMS = "searchFarms";
     public static final String CREATE_LOCATION = "createLocation";
     public static final String REGISTER = "register";
-    public static final String REGISTRATION_FORM = "registerForm";
+    public static final String REGISTRATION_FORM = "register/registrationForm";
 
     public Mappings() {
     }

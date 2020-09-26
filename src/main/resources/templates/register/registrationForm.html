@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register User Form</title>
+</head>
+<body>
+<div align="center">
+    <h1>Registration Form</h1>
+    <!--/*@thymesVar id="userDTO" type="com.warkoczewski.AgroAdventureBooking.dto.RegistrationDataDTO"*/-->
+    <form th:action="@{/registrationForm}" method="post" th:object="${userDTO}">
+        <label>Username</label><input type="text" th:field="*{username}"/><br/><br/>
+        <label>Email</label><input type="text" th:field="*{email}"/><br/><br/>
+        <label>Password</label><input type="text" th:field="*{password}"/><br/><br/>
+        <label>rePassword</label><input type="text" th:field="*{rePassword}"/><br/><br/>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>

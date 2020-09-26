@@ -1,24 +1,8 @@
 package com.warkoczewski.AgroAdventureBooking.service;
 
-import com.warkoczewski.AgroAdventureBooking.model.Location;
-import com.warkoczewski.AgroAdventureBooking.repository.LocationRepository;
-import org.springframework.stereotype.Service;
+import com.warkoczewski.AgroAdventureBooking.dto.LocationDTO;
 
-import java.util.List;
+public interface LocationService {
 
-
-@Service
-public class LocationService {
-
-    private final LocationRepository locationRepository;
-
-    public LocationService(LocationRepository locationRepository) {
-        this.locationRepository = locationRepository;
-    }
-
-    public List<Location> showAll(){
-        return locationRepository.findAll();
-    }
-
-
+    void createLocation(LocationDTO locationData);
 }

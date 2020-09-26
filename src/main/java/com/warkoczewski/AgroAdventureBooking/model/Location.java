@@ -1,10 +1,13 @@
 package com.warkoczewski.AgroAdventureBooking.model;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import java.util.Objects;
 
 @NoArgsConstructor
@@ -13,11 +16,14 @@ import java.util.Objects;
 public class Location {
 
     @Id
+    @GeneratedValue(generator = "locationSeq")
+    @SequenceGenerator(name = "locationSeq", sequenceName = "location_Seq", allocationSize = 1)
     private Long loc_Id;
 
     private double lat;
     private double lon;
-    private String name;
+    @NotNull
+    private String greeting;
 
     public Long getLoc_Id() {
         return loc_Id;
@@ -39,12 +45,12 @@ public class Location {
         this.lon = lon;
     }
 
-    public String getName() {
-        return name;
+    public String getGreeting() {
+        return greeting;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setGreeting(String greeting) {
+        this.greeting = greeting;
     }
 
     @Override
@@ -55,11 +61,11 @@ public class Location {
         return Double.compare(location.lat, lat) == 0 &&
                 Double.compare(location.lon, lon) == 0 &&
                 Objects.equals(loc_Id, location.loc_Id) &&
-                Objects.equals(name, location.name);
+                Objects.equals(greeting, location.greeting);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(loc_Id, lat, lon, name);
+        return Objects.hash(loc_Id, lat, lon, greeting);
     }
 }

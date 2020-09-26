@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Creating location</title>
+    <link rel="stylesheet" href="https://igoradamenko.github.io/awsm.css/css/awsm.css">
+</head>
+<body>
+<h1>Create a new location</h1>
+<!--/*@thymesVar id="location" type="com.warkoczewski.AgroAdventureBooking.dto.LocationDTO"*/-->
+<form action="#" method="post" th:action= "@{/createLocation}" th:object="${locationDTO}">
+<legend>New Location</legend>
+<fieldset>
+    <label>Latitude<input th:type="number" th:field="${locationDTO.lat}"/></label>
+    <label>Longitude<input th:type="number" th:field="${locationDTO.lon}"/></label>
+    <label>Greeting<input th:type="text" th:field="${locationDTO.greeting}"/></label>
+    <p>
+        <button type="submit" value="Add">Add Location</button>
+        <button type="reset" value="Reset">Reset</button>
+        <a th:href="@{/searchFarms}">Powrót do Listy Produktów</a>
+    </p>
+</fieldset>
+</form>
+</body>
+</html>

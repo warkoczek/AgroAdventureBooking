@@ -6,7 +6,9 @@ public final  class Mappings {
     public static final String MARKERS = "markers";
     public static final String MARKERS_REGION = "markers/{region}";
     public static final String FARM = "farm/{name}";
-    public static final String SEARCH_FARMS = "search farms";
+    public static final String SEARCH_FARMS = "searchFarms";
+    public static final String CREATE_LOCATION = "createLocation";
+    public static final String REGISTRATION_FORM = "register/registrationForm";
 
     public Mappings() {
     }

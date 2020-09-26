@@ -14,6 +14,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @Slf4j
 @Validated
@@ -31,6 +34,11 @@ public class RegistrationServiceImpl implements RegistrationService {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.modelMapper = modelMapper;
+    }
+
+    @Override
+    public Optional<User> findUserByEmail(String email) {
+        return userRepository.findUserByEmail(email);
     }
 
     @Override

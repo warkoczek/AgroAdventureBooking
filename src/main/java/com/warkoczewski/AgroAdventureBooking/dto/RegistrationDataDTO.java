@@ -17,9 +17,14 @@ public class RegistrationDataDTO {
 
     private String rePassword;
 
-    @NotNull
-    private Boolean termsAcceptance;
 
     public RegistrationDataDTO() {
+    }
+
+    public RegistrationDataDTO(String username, String email, String password, String rePassword) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.rePassword = rePassword;
     }
 }

@@ -20,11 +20,6 @@ public class RegistrationController {
         this.registrationService = registrationService;
     }
 
-    @GetMapping(Mappings.REGISTER)
-    public String getRegistrationPage(){
-        return ViewNames.REGISTER;
-    }
-
     @GetMapping(Mappings.REGISTRATION_FORM)
     public String getRegistrationFormPage(Model model){
         model.addAttribute("userDTO", new RegistrationDataDTO());
@@ -32,7 +27,8 @@ public class RegistrationController {
     }
     @PostMapping(Mappings.REGISTRATION_FORM)
     public String register(@ModelAttribute("userDTO") RegistrationDataDTO registrationDataDTO){
+        //todo validation and success page
         registrationService.register(registrationDataDTO);
-        return "redirect: /register/registrationForm?success";
+        return  "redirect: /register/registrationForm?success";
     }
 }

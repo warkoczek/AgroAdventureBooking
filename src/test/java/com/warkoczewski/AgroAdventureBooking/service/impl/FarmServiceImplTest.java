@@ -1,6 +1,7 @@
-package com.warkoczewski.AgroAdventureBooking.service;
+package com.warkoczewski.AgroAdventureBooking.service.impl;
 
 import com.warkoczewski.AgroAdventureBooking.model.Farm;
+import com.warkoczewski.AgroAdventureBooking.service.FarmService;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,7 +16,7 @@ import java.util.List;
 public class FarmServiceImplTest {
 
     @Autowired
-    private  FarmService sut;
+    private FarmService sut;
 
 
     @Test

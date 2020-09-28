@@ -1,20 +1,20 @@
 package com.warkoczewski.AgroAdventureBooking.dto;
 
-import com.sun.istack.NotNull;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+
+import javax.validation.constraints.NotBlank;
+
+@Data
 public class RegistrationDataDTO {
 
-
+    @NotBlank(message = "This field can't be blank")
     private String username;
-
+    @NotBlank(message = "This field can't be blank")
     private String email;
-
+    @NotBlank(message = "This field can't be blank")
     private String password;
-
+    @NotBlank(message = "This field can't be blank")
     private String rePassword;
 
 

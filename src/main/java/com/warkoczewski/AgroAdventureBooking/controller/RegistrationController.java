@@ -35,6 +35,6 @@ public class RegistrationController {
         }
         //todo validation and success page
         registrationService.register(registrationDataDTO);
-        return  "redirect: /register/registrationForm?success";
+        return  "register/registrationSuccess";
     }
 }

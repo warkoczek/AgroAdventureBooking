@@ -12,7 +12,9 @@ public class SamePasswordValidatorForRegistrationDataDTO implements ConstraintVa
 
     @Override
     public boolean isValid(RegistrationDataDTO registrationDataDTO, ConstraintValidatorContext context) {
-
+            if (registrationDataDTO.getPassword() == null || registrationDataDTO.getRePassword() == null){
+                return true;
+            }
         return false;
     }
 }

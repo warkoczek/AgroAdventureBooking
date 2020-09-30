@@ -12,15 +12,17 @@ import javax.validation.constraints.Size;
 public class RegistrationDataDTO {
 
     @NotBlank(message = "This field can't be blank")
-    @Size(min = 4, max = 12, message = "Username characters number must be between 4 and 12")
+    @Size(min = 4, max = 12, message = "Password must be between 4 and 12 characters")
     private String username;
     @NotBlank(message = "This field can't be blank")
     @Email
     @UniqueEmail
     private String email;
     @NotBlank(message = "This field can't be blank")
+    @Size(min = 4, max = 12, message = "Password must be between 4 and 12 characters")
     private String password;
     @NotBlank(message = "This field can't be blank")
+    @Size(min = 4, max = 12, message = "Password must be between 4 and 12 characters")
     private String rePassword;
 
 

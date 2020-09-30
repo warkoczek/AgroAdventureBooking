@@ -1,5 +1,6 @@
 package com.warkoczewski.AgroAdventureBooking.dto;
 
+import com.warkoczewski.AgroAdventureBooking.validation.constraints.SamePassword;
 import com.warkoczewski.AgroAdventureBooking.validation.constraints.UniqueEmail;
 import lombok.Data;
 
@@ -9,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Data
+
 public class RegistrationDataDTO {
 
     @NotBlank(message = "This field can't be blank")

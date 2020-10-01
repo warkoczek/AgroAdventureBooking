@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:class="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Registration Success</title>
 </head>
 <body>
 <h1>Registration done!</h1>
+<a th:href="@{/register/registrationForm}">Return to the registration page</a>
 </body>
 </html>

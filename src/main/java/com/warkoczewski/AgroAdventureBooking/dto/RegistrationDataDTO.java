@@ -1,5 +1,6 @@
 package com.warkoczewski.AgroAdventureBooking.dto;
 
+import com.warkoczewski.AgroAdventureBooking.validation.constraints.PasswordCharacter;
 import com.warkoczewski.AgroAdventureBooking.validation.constraints.SamePassword;
 import com.warkoczewski.AgroAdventureBooking.validation.constraints.UniqueEmail;
 import com.warkoczewski.AgroAdventureBooking.validation.constraints.UniqueUsername;
@@ -24,6 +25,7 @@ public class RegistrationDataDTO {
     private String email;
     @NotBlank(message = "This field can't be blank")
     @Size(min = 4, max = 12, message = "Password must be between 4 and 12 characters")
+    @PasswordCharacter
     private String password;
     @NotBlank(message = "This field can't be blank")
     @Size(min = 4, max = 12, message = "Password must be between 4 and 12 characters")

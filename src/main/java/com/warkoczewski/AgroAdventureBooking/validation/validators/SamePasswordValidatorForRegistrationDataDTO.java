@@ -8,9 +8,7 @@ import org.springframework.stereotype.Component;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-@Component
-@Scope("prototype")
-@Slf4j
+
 public class SamePasswordValidatorForRegistrationDataDTO implements ConstraintValidator<SamePassword, RegistrationDataDTO> {
 
     public void initialize(SamePassword constraint){}
@@ -23,7 +21,7 @@ public class SamePasswordValidatorForRegistrationDataDTO implements ConstraintVa
                 boolean valid = registrationDataDTO.getPassword().equals(registrationDataDTO.getRePassword());
                 if(!valid){
                     context.disableDefaultConstraintViolation();
-                    context.buildConstraintViolationWithTemplate("SamePassword.registrationDataDTO.rePassword")
+                    context.buildConstraintViolationWithTemplate("Passwords must match")
                     .addPropertyNode("rePassword").addConstraintViolation();
                 }
                 return valid;

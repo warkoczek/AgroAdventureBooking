@@ -2,9 +2,6 @@ package com.warkoczewski.AgroAdventureBooking.validation.validators;
 
 import com.warkoczewski.AgroAdventureBooking.dto.RegistrationDataDTO;
 import com.warkoczewski.AgroAdventureBooking.validation.constraints.SamePassword;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

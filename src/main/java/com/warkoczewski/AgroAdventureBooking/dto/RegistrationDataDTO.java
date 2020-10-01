@@ -2,6 +2,7 @@ package com.warkoczewski.AgroAdventureBooking.dto;
 
 import com.warkoczewski.AgroAdventureBooking.validation.constraints.SamePassword;
 import com.warkoczewski.AgroAdventureBooking.validation.constraints.UniqueEmail;
+import com.warkoczewski.AgroAdventureBooking.validation.constraints.UniqueUsername;
 import lombok.Data;
 
 
@@ -15,6 +16,7 @@ public class RegistrationDataDTO {
 
     @NotBlank(message = "This field can't be blank")
     @Size(min = 4, max = 12, message = "Username must be between 4 and 12 characters")
+    @UniqueUsername
     private String username;
     @NotBlank(message = "This field can't be blank")
     @Email

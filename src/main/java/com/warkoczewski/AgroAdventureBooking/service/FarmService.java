@@ -15,7 +15,7 @@ public class FarmService {
         this.farmRepository = farmRepository;
     }
 
-
+    public List<Farm> findAll(){return farmRepository.findAll();}
     public Optional<Farm> showFarmByName(String name) {
         return farmRepository.findFarmByName(name);
     }

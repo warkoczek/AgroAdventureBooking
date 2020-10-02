@@ -25,7 +25,13 @@ public class FarmController {
     public String getHomePage(){
         return ViewNames.HOME;
     }
-
+    @GetMapping(Mappings.ALL_FARMS)
+    public ModelAndView showAllFarms(ModelAndView modelAndView){
+        List<Farm> allFarms = farmService.findAll();
+        modelAndView.setViewName("farm/allFarms");
+        modelAndView.addObject("allFarms", allFarms);
+        return modelAndView;
+    }
 
     @GetMapping(value = Mappings.SEARCH_FARMS)
     public ModelAndView searchFarmByNamePhrase(@RequestParam(defaultValue = "*") String phrase){
@@ -40,7 +46,7 @@ public class FarmController {
     @GetMapping(Mappings.FARM)
     public ModelAndView getFarmByName(@PathVariable("name") String name){
 
-        ModelAndView modelAndView = new ModelAndView("farm");
+        ModelAndView modelAndView = new ModelAndView("/main/resources/templates/farm/farm.html");
 
         Optional<Farm> farm = farmService.showFarmByName(name);
         farm.ifPresent(farm1 -> modelAndView.addObject("farm", farm.get()));

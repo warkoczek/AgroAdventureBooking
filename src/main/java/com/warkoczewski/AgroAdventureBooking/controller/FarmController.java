@@ -3,9 +3,9 @@ package com.warkoczewski.AgroAdventureBooking.controller;
 import com.warkoczewski.AgroAdventureBooking.model.Farm;
 import com.warkoczewski.AgroAdventureBooking.service.FarmService;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
+import com.warkoczewski.AgroAdventureBooking.util.ViewNames;
 import org.springframework.stereotype.Controller;
 
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,6 +19,11 @@ public class FarmController {
 
     public FarmController(FarmService farmService) {
         this.farmService = farmService;
+    }
+
+    @GetMapping(Mappings.HOME)
+    public String getHomePage(){
+        return ViewNames.HOME;
     }
 
 

@@ -10,6 +10,7 @@ public final  class Mappings {
     public static final String CREATE_LOCATION = "createLocation";
     public static final String REGISTRATION_FORM = "register/registrationForm";
     public static final String LOGIN = "register/login";
+    public static final String HOME = "home/homePage";
 
     public Mappings() {
     }

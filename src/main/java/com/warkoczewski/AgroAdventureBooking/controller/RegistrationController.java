@@ -1,5 +1,6 @@
 package com.warkoczewski.AgroAdventureBooking.controller;
 
+import com.warkoczewski.AgroAdventureBooking.dto.LoginDataDTO;
 import com.warkoczewski.AgroAdventureBooking.dto.RegistrationDataDTO;
 import com.warkoczewski.AgroAdventureBooking.service.RegistrationService;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
@@ -33,8 +34,14 @@ public class RegistrationController {
         if(bindingResult.hasErrors()){
             return ViewNames.REGISTRATION_FORM;
         }
-        //todo validation and success page
+
         registrationService.register(registrationDataDTO);
         return  "register/registrationSuccess";
+    }
+
+    @GetMapping(Mappings.LOGIN)
+    public String getLoginPage(Model model){
+        model.addAttribute("loginDTO", new LoginDataDTO());
+        return ViewNames.LOGIN;
     }
 }

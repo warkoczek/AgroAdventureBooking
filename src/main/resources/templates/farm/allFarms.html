@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <title>All Farms</title>
 </head>
+
 <body>
-<form action="" method="get">
-    <script th:inline="javascript">
-        var allFarms = [[${allFarms}]];
-        allFarms.forEach(value => document.write("\n" + value.name));
-    </script>
-</form>
+<section class="allFarms" th:each="farm : ${allFarms}">
+<div class="farm-info">
+    <h1 th:text="${farm.name}"></h1>
+</div>
+</section>
 
 </body>
+
 </html>

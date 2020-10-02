@@ -11,17 +11,17 @@ import javax.persistence.Id;
 @Entity
 public class Farm {
     @Id
-    private Long id;
+    private Long farm_Id;
     private String name;
     private String description;
     private boolean isAvailable;
 
-    public Long getId() {
-        return id;
+    public Long getFarm_Id() {
+        return farm_Id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setFarm_Id(Long id) {
+        this.farm_Id = id;
     }
 
     public String getName() {

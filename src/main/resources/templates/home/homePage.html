@@ -7,7 +7,7 @@
 </head>
 <body>
 <!-- create navigation bar (header) -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav th:replace="~{fragments/head :: mainNavFragment}" class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <button type="submit" class="navbar-toggle collapsed"
@@ -26,7 +26,7 @@
 </nav>
 <br>
 <br>
-<h1>Be a farmer during you holidays</h1>
+<h1>Be a farmer during your holidays</h1>
 <footer th:replace="~{fragments/footer :: footerFragment}">Made by Adam Warkoczewski</footer>
 </body>
 </html>

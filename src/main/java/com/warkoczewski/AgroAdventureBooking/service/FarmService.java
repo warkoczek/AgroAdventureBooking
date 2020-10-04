@@ -20,7 +20,6 @@ public class FarmService {
         return farmRepository.findFarmByName(name);
     }
 
-
     public List<Farm> showFarmsByNamePhrase(String phrase) {
         return farmRepository.findFarmByNameIsContaining(phrase);
     }

@@ -29,12 +29,15 @@
 </nav>
 <br>
 <br>
+
+
 <!--section-->
 <section class="allFarms" th:each="farm : ${allFarms}">
 <div class="farm-info">
     <h1 th:text="${farm.name}"></h1>
 </div>
 </section>
+
 <footer th:replace="~{fragments/footer :: footerFragment}">Made by Adam Warkoczewski</footer>
 </body>
 

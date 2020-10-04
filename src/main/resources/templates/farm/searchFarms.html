@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: headFragment}">
+    <meta charset="UTF-8">
+    <title>Search Farms</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+<body>
+<!--search farms -->
+<h1>Search for farms</h1>
+
+<div class="container">
+
+
+    <form th:action="@{/farm/searchFarms}" method="post">
+        <div class="input-group">
+            <input type="text" class="form-control" name="phrase" placeholder="Search for farms">
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-default">Submit
+                    <i class="glyphicon glyphicon-search"></i></button><br><br>
+            </div>
+        </div>
+    </form>
+</div>
+
+<section class="farms" th:each="farm : ${farms}">
+    <div class="farm-info">
+        <h1 th:text="${farm.name}"></h1>
+    </div>
+</section>
+
+<footer th:replace="~{fragments/footer :: footerFragment}">Made by Adam Warkoczewski</footer>
+</body>
+</html>

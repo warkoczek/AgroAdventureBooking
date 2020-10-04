@@ -1,11 +1,15 @@
 package com.warkoczewski.AgroAdventureBooking.controller;
 
+import com.warkoczewski.AgroAdventureBooking.dto.FarmSearchDTO;
 import com.warkoczewski.AgroAdventureBooking.model.Farm;
 import com.warkoczewski.AgroAdventureBooking.service.FarmService;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
 import com.warkoczewski.AgroAdventureBooking.util.ViewNames;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,14 +37,17 @@ public class FarmController {
         return modelAndView;
     }
 
-    @GetMapping(value = Mappings.SEARCH_FARMS)
-    public ModelAndView searchFarmByNamePhrase(@RequestParam(defaultValue = "*") String phrase){
+    @GetMapping(Mappings.SEARCH_FARMS)
+    public ModelAndView getSearchFarmsPage(){
+      ModelAndView modelAndView = new ModelAndView(ViewNames.SEARCH_FARMS);
+        return modelAndView;
+    }
 
-        ModelAndView modelAndView = new ModelAndView("searchFarms");
-
-        List<Farm> farmsByPhrase = farmService.showFarmsByNamePhrase(phrase);
-        modelAndView.addObject("farms", farmsByPhrase);
-
+    @PostMapping( Mappings.SEARCH_FARMS)
+    public ModelAndView searchFarmByPhrase(@RequestParam("phrase") String phrase){
+        List<Farm> farms = farmService.showFarmsByNamePhrase(phrase);
+        ModelAndView modelAndView = new ModelAndView(ViewNames.SEARCH_FARMS);
+        modelAndView.addObject("farms", farms);
         return modelAndView;
     }
     @GetMapping(Mappings.FARM)

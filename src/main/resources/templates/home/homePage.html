@@ -1,17 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
+<head th:replace="~{fragments/head :: headFragment}">
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <style>
-        footer {
-            text-align: center;
-            padding: 3px;
-            background-color: Black;
-            color: white;
-        }
-    </style>
 </head>
 <body>
 <!-- create navigation bar (header) -->
@@ -35,6 +27,6 @@
 <br>
 <br>
 <h1>Be a farmer during you holidays</h1>
-<footer>Made by Adam Warkoczewski</footer>
+<footer th:replace="~{fragments/footer :: footerFragment}">Made by Adam Warkoczewski</footer>
 </body>
 </html>

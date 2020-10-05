@@ -40,11 +40,15 @@ public class Farm {
         this.description = description;
     }
 
-    public boolean isAvailable() {
-        return isAvailable;
+    public boolean isAvailable() {return isAvailable;
     }
 
     public void setAvailable(boolean available) {
         isAvailable = available;
     }
+
+    public String farmIsAvailable(){
+        return isAvailable() ? "Available" : "Not Available";
+    }
+
 }

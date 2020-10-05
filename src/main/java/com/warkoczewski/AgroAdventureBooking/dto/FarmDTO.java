@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FarmSearchDTO {
+public class FarmDTO {
 
-    private String phrase;
+    private String name;
+    private boolean isAvailable;
 }

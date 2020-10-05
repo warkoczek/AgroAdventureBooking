@@ -1,15 +1,12 @@
 package com.warkoczewski.AgroAdventureBooking.controller;
 
-import com.warkoczewski.AgroAdventureBooking.dto.FarmSearchDTO;
+import com.warkoczewski.AgroAdventureBooking.dto.FarmDTO;
 import com.warkoczewski.AgroAdventureBooking.model.Farm;
 import com.warkoczewski.AgroAdventureBooking.service.FarmService;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
 import com.warkoczewski.AgroAdventureBooking.util.ViewNames;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -45,7 +42,7 @@ public class FarmController {
 
     @PostMapping( Mappings.SEARCH_FARMS)
     public ModelAndView searchFarmByPhrase(@RequestParam("phrase") String phrase){
-        List<Farm> farms = farmService.showFarmsByNamePhrase(phrase);
+        List<FarmDTO> farms = farmService.showFarmsByNamePhrase(phrase);
         ModelAndView modelAndView = new ModelAndView(ViewNames.SEARCH_FARMS);
         modelAndView.addObject("farms", farms);
         return modelAndView;

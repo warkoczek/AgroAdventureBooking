@@ -1,54 +1,29 @@
 package com.warkoczewski.AgroAdventureBooking.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.Type;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter@Setter
 @Entity
 public class Farm {
     @Id
     private Long farm_Id;
     private String name;
     private String description;
+    @Column(nullable = false, columnDefinition = "TINYINT(1)")
+    @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean isAvailable;
+    @OneToMany
+    private Set<Booking> booking;
 
-    public Long getFarm_Id() {
-        return farm_Id;
-    }
-
-    public void setFarm_Id(Long id) {
-        this.farm_Id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public boolean isAvailable() {return isAvailable;
-    }
-
-    public void setAvailable(boolean available) {
-        isAvailable = available;
-    }
-
-    public String farmIsAvailable(){
-        return isAvailable() ? "Available" : "Not Available";
-    }
 
 }

@@ -31,8 +31,7 @@
 <section class="farms" th:each="farm : ${farms}">
     <div class="farm-info">
         <div th:text="${farm.name}"></div>
-        <div th:if="${farm.isAvailable()}">Available</div>
-        <div th:unless="${farm.isAvailable()}">Not Available</div>
+        <div th:text="${farm.available}"></div>
 
     </div>
 </section>

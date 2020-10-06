@@ -3,11 +3,14 @@ package com.warkoczewski.AgroAdventureBooking.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
+import java.util.Date;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -15,8 +18,10 @@ import java.time.LocalDateTime;
 public class Booking {
     @Id
     private Long id;
-    private LocalDateTime check_in;
-    private LocalDateTime check_out;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date check_in;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date check_out;
     @ManyToOne
     private Farm farm;
     @ManyToOne

@@ -9,6 +9,7 @@ public final class ViewNames {
     public static final String LOGIN = "register/login";
     public static final String HOME = "home/homePage";
     public static final String ALL_FARMS = "farm/allFarms";
+    public static final String BOOKING_PAGE = "booking/bookingPage";
 
 
     public ViewNames() {

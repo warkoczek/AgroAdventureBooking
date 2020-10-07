@@ -4,12 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import java.time.LocalDateTime;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -18,10 +19,11 @@ import java.util.Date;
 public class Booking {
     @Id
     private Long id;
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    private Date check_in;
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    private Date check_out;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate check_in;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Nullable
+    private LocalDate check_out;
     @ManyToOne
     private Farm farm;
     @ManyToOne

@@ -8,6 +8,7 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -17,8 +18,12 @@ import java.util.Set;
 public class Farm {
     @Id
     private Long farm_Id;
+    @NotBlank
     private String name;
     private String description;
+    @OneToOne
+    @JoinColumn(name = "localization_id")
+    private Localization address;
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean isAvailable;

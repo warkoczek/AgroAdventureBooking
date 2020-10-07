@@ -1,9 +1,5 @@
 package com.warkoczewski.AgroAdventureBooking.service.impl;
 
-import com.warkoczewski.AgroAdventureBooking.dto.BookingDataDTO;
-import com.warkoczewski.AgroAdventureBooking.model.Booking;
-import com.warkoczewski.AgroAdventureBooking.model.Farm;
-import com.warkoczewski.AgroAdventureBooking.model.User;
 import com.warkoczewski.AgroAdventureBooking.repository.BookingRepository;
 import com.warkoczewski.AgroAdventureBooking.repository.FarmRepository;
 import com.warkoczewski.AgroAdventureBooking.repository.UserRepository;

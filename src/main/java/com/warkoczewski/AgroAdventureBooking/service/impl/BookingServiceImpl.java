@@ -42,7 +42,7 @@ public class BookingServiceImpl implements BookingService {
 
     private boolean datesNotOverlapping() {
         Map<Long, Booking> bookingMap = getAllBookings();
-        if()
+
         return false;
     }
 

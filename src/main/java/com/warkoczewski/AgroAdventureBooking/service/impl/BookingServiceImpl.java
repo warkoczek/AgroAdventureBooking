@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,18 +42,19 @@ public class BookingServiceImpl implements BookingService {
 
 
     private boolean datesAreOverlapping(BookingDTO bookingDTO) {
-        return getAllBookings().entrySet().stream().anyMatch(
-                longBookingEntry -> ((bookingDTO.getCheck_in().isAfter(longBookingEntry.getValue().getCheck_in())
-                        || bookingDTO.getCheck_in().isEqual(longBookingEntry.getValue().getCheck_in()))
-                        && (bookingDTO.getCheck_in().isBefore(longBookingEntry.getValue().getCheck_out())
-                        || bookingDTO.getCheck_in().isEqual(longBookingEntry.getValue().getCheck_out())))
-                        || ((longBookingEntry.getValue().getCheck_in().isAfter(bookingDTO.getCheck_in())
-                        || longBookingEntry.getValue().getCheck_in().isEqual(bookingDTO.getCheck_in()))
-                        && (longBookingEntry.getValue().getCheck_in().isBefore(bookingDTO.getCheck_out()))
-                        || (longBookingEntry.getValue().getCheck_in().isEqual(bookingDTO.getCheck_out())))
-        )
+        return getAllBookings().values().stream().anyMatch(
+                 getBookingPredicate(bookingDTO));
+    }
 
-        ;
+    private Predicate<Booking> getBookingPredicate(BookingDTO bookingDTO) {
+        return booking -> ((bookingDTO.getCheck_in().isAfter(booking.getCheck_in())
+                    || bookingDTO.getCheck_in().isEqual(booking.getCheck_in()))
+                    && (bookingDTO.getCheck_in().isBefore(booking.getCheck_out())
+                    || bookingDTO.getCheck_in().isEqual(booking.getCheck_out())))
+                    || ((booking.getCheck_in().isAfter(bookingDTO.getCheck_in())
+                    || booking.getCheck_in().isEqual(bookingDTO.getCheck_in()))
+                    && (booking.getCheck_in().isBefore(bookingDTO.getCheck_out()))
+                    || (booking.getCheck_in().isEqual(bookingDTO.getCheck_out())));
     }
 
     private Map<Long, Booking> getAllBookings() {

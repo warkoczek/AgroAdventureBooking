@@ -43,10 +43,10 @@ public class BookingServiceImpl implements BookingService {
 
     private boolean datesAreOverlapping(BookingDTO bookingDTO) {
         return getAllBookings().values().stream().anyMatch(
-                 getBookingPredicate(bookingDTO));
+                 getBookingOverlappingPredicate(bookingDTO));
     }
 
-    private Predicate<Booking> getBookingPredicate(BookingDTO bookingDTO) {
+    private Predicate<Booking> getBookingOverlappingPredicate(BookingDTO bookingDTO) {
         return booking -> ((bookingDTO.getCheck_in().isAfter(booking.getCheck_in())
                     || bookingDTO.getCheck_in().isEqual(booking.getCheck_in()))
                     && (bookingDTO.getCheck_in().isBefore(booking.getCheck_out())

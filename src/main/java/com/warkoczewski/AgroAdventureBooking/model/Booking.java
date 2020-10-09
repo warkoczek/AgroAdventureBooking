@@ -22,7 +22,6 @@ public class Booking {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate check_in;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Nullable
     private LocalDate check_out;
     @ManyToOne
     private Farm farm;

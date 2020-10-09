@@ -30,7 +30,7 @@ public class BookingServiceImpl implements BookingService {
         User user = userRepository.getUserByEmail(bookingDTO.getUserEmail());
         Farm farm = farmRepository.getFarmByName(bookingDTO.getFarmName());
         Booking booking = new Booking();
-        if(datesNotOverlapping()){
+        if(!datesAreOverlapping(bookingDTO)){
             booking.setCheck_in(bookingDTO.getCheck_in());
             booking.setCheck_out(bookingDTO.getCheck_out());
         }
@@ -40,10 +40,19 @@ public class BookingServiceImpl implements BookingService {
     }
 
 
-    private boolean datesNotOverlapping() {
-        Map<Long, Booking> bookingMap = getAllBookings();
+    private boolean datesAreOverlapping(BookingDTO bookingDTO) {
+        return getAllBookings().entrySet().stream().anyMatch(
+                longBookingEntry -> ((bookingDTO.getCheck_in().isAfter(longBookingEntry.getValue().getCheck_in())
+                        || bookingDTO.getCheck_in().isEqual(longBookingEntry.getValue().getCheck_in()))
+                        && (bookingDTO.getCheck_in().isBefore(longBookingEntry.getValue().getCheck_out())
+                        || bookingDTO.getCheck_in().isEqual(longBookingEntry.getValue().getCheck_out())))
+                        || ((longBookingEntry.getValue().getCheck_in().isAfter(bookingDTO.getCheck_in())
+                        || longBookingEntry.getValue().getCheck_in().isEqual(bookingDTO.getCheck_in()))
+                        && (longBookingEntry.getValue().getCheck_in().isBefore(bookingDTO.getCheck_out()))
+                        || (longBookingEntry.getValue().getCheck_in().isEqual(bookingDTO.getCheck_out())))
+        )
 
-        return false;
+        ;
     }
 
     private Map<Long, Booking> getAllBookings() {

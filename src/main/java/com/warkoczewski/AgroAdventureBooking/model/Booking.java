@@ -6,10 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -18,7 +15,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Booking {
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long booking_Id;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate check_in;
     @DateTimeFormat(pattern = "yyyy-MM-dd")

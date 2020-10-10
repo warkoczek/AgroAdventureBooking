@@ -1,8 +1,9 @@
 package com.warkoczewski.AgroAdventureBooking.service;
 
 import com.warkoczewski.AgroAdventureBooking.dto.BookingDTO;
+import com.warkoczewski.AgroAdventureBooking.model.Booking;
 
 public interface BookingService {
-    void bookFarm(BookingDTO bookingDTO);
+    Booking createFarmBooking(BookingDTO bookingDTO);
 
 }

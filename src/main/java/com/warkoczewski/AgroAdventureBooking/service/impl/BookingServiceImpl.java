@@ -1,6 +1,7 @@
 package com.warkoczewski.AgroAdventureBooking.service.impl;
 
 import com.warkoczewski.AgroAdventureBooking.dto.BookingDTO;
+import com.warkoczewski.AgroAdventureBooking.exception.BookingDatesOverlappingException;
 import com.warkoczewski.AgroAdventureBooking.model.Booking;
 import com.warkoczewski.AgroAdventureBooking.model.Farm;
 import com.warkoczewski.AgroAdventureBooking.model.User;
@@ -11,6 +12,7 @@ import com.warkoczewski.AgroAdventureBooking.service.BookingService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.function.Function;
@@ -27,17 +29,20 @@ public class BookingServiceImpl implements BookingService {
     private final ModelMapper modelMapper;
 
     @Override
-    public void bookFarm(BookingDTO bookingDTO) {
-        User user = userRepository.getUserByEmail(bookingDTO.getUserEmail());
-        Farm farm = farmRepository.getFarmByName(bookingDTO.getFarmName());
+    @Transactional
+    public Booking createFarmBooking(BookingDTO bookingDTO) {
         Booking booking = new Booking();
         if(!datesAreOverlapping(bookingDTO)){
             booking.setCheck_in(bookingDTO.getCheck_in());
             booking.setCheck_out(bookingDTO.getCheck_out());
+            booking.setUser(userRepository.getUserByEmail(bookingDTO.getUserEmail()));
+            booking.setFarm(farmRepository.getFarmByName(bookingDTO.getFarmName()));
+            bookingRepository.save(booking);
+        }else{
+            throw new BookingDatesOverlappingException("Booking not possible for the dates you chose");
         }
-        booking.setUser(userRepository.getUserByEmail(bookingDTO.getUserEmail()));
-        booking.setFarm(farmRepository.getFarmByName(bookingDTO.getFarmName()));
-        bookingRepository.save(booking);
+
+        return booking;
     }
 
 
@@ -59,7 +64,7 @@ public class BookingServiceImpl implements BookingService {
 
     private Map<Long, Booking> getAllBookings() {
         return bookingRepository.findAll().stream()
-                .collect(Collectors.toMap(Booking::getId, Function.identity()));
+                .collect(Collectors.toMap(Booking::getBooking_Id, Function.identity()));
     }
 
 

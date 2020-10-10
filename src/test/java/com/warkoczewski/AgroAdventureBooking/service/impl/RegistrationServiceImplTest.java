@@ -28,7 +28,7 @@ class RegistrationServiceImplTest {
         String expectedUsername = "czulik";
         //when
         registrationService.register(registrationDataDTO);
-        String username = registrationService.findUserByEmail("czu@wp.pl").get().getUsername();
+        String username = registrationService.findUserByEmail("czu@wp.pl").getUsername();
         //then
         Assert.assertEquals(expectedUsername,username);
     }

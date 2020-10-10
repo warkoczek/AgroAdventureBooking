@@ -4,10 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -16,9 +16,14 @@ import java.util.Set;
 @Entity
 public class Farm {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long farm_Id;
+    @NotBlank
     private String name;
     private String description;
+    @OneToOne
+    @JoinColumn(name = "address_Id")
+    private Address address;
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean isAvailable;

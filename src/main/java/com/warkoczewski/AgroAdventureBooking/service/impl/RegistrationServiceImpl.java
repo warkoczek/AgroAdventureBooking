@@ -37,8 +37,8 @@ public class RegistrationServiceImpl implements RegistrationService {
     }
 
     @Override
-    public Optional<User> findUserByEmail(String email) {
-        return userRepository.findUserByEmail(email);
+    public User findUserByEmail(String email) {
+        return userRepository.getUserByEmail(email);
     }
 
     @Override

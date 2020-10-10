@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface FarmRepository extends JpaRepository<Farm, Long> {
     List<Farm> findAll();
-    Optional<Farm> findFarmByName(String name);
+    Farm getFarmByName(String name);
     List<Farm> findFarmByNameIsContaining(String phrase);
 
 }

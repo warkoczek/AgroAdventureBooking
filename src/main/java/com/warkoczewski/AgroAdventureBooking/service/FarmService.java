@@ -21,7 +21,7 @@ public class FarmService {
     }
 
     public List<Farm> findAll(){return farmRepository.findAll();}
-    public Optional<Farm> showFarmByName(String name) { return farmRepository.findFarmByName(name);
+    public Farm showFarmByName(String name) { return farmRepository.getFarmByName(name);
     }
 
 

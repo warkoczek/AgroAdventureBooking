@@ -2,6 +2,7 @@ package com.warkoczewski.AgroAdventureBooking.service.impl;
 
 import com.warkoczewski.AgroAdventureBooking.dto.BookingDTO;
 import com.warkoczewski.AgroAdventureBooking.exception.BookingDatesOverlappingException;
+import com.warkoczewski.AgroAdventureBooking.exception.BookingNotExistsException;
 import com.warkoczewski.AgroAdventureBooking.model.Booking;
 import com.warkoczewski.AgroAdventureBooking.repository.BookingRepository;
 import com.warkoczewski.AgroAdventureBooking.repository.FarmRepository;
@@ -44,9 +45,14 @@ public class BookingServiceImpl implements BookingService {
         return booking;
     }
 
+    @Override
+    public void deleteBooking(Long id) {
+        bookingRepository.findById(id).ifPresent(bookingRepository::delete);
+    }
+
 
     private boolean datesAreOverlapping(BookingDTO bookingDTO) {
-        return getAllBookings().values().stream().anyMatch(
+        return getAllBookings(bookingDTO).values().stream().anyMatch(
                  getBookingOverlappingPredicate(bookingDTO));
     }
 
@@ -61,9 +67,14 @@ public class BookingServiceImpl implements BookingService {
                     || (booking.getCheck_in().isEqual(bookingDTO.getCheck_out())));
     }
 
-    private Map<Long, Booking> getAllBookings() {
+    private Map<Long, Booking> getAllBookings(BookingDTO bookingDTO) {
         return bookingRepository.findAll().stream()
+                .filter(getBookingPredicate(bookingDTO))
                 .collect(Collectors.toMap(Booking::getBooking_Id, Function.identity()));
+    }
+
+    private Predicate<Booking> getBookingPredicate(BookingDTO bookingDTO) {
+        return booking -> booking.getFarm().getName().equalsIgnoreCase(bookingDTO.getFarmName());
     }
 
 

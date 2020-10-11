@@ -10,10 +10,7 @@ import com.warkoczewski.AgroAdventureBooking.util.ViewNames;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -41,5 +38,10 @@ public class BookingController {
         }
         bookingServiceImpl.createFarmBooking(bookingDTO);
         return ViewNames.FARM_BOOKED;
+    }
+    @GetMapping(Mappings.DELETE_BOOKING)
+    public String deleteBooking(@PathVariable("booking_Id") Long id){
+        bookingServiceImpl.deleteBooking(id);
+        return ViewNames.DELETED;
     }
 }

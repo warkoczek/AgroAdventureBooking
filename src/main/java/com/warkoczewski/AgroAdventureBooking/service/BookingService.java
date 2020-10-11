@@ -6,4 +6,5 @@ import com.warkoczewski.AgroAdventureBooking.model.Booking;
 public interface BookingService {
     Booking createFarmBooking(BookingDTO bookingDTO);
 
+    void deleteBooking(Long id);
 }

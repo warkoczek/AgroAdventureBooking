@@ -8,6 +8,7 @@ import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Data
@@ -17,9 +18,9 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long booking_Id;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "check_in")
     private LocalDate check_in;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "check_out")
     private LocalDate check_out;
     @ManyToOne
     private Farm farm;

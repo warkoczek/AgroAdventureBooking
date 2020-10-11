@@ -33,7 +33,7 @@
         <div th:text="${farm.name}"></div>
         <div th:if="${farm.available}">Available</div>
         <div th:unless="${farm.available}"> Not Available</div>
-
+        <span><a href="/" th:href="@{/booking/bookingPage}">Book</a></span>
     </div>
 </section>
 

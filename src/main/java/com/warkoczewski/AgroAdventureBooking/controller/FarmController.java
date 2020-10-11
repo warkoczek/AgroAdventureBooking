@@ -34,8 +34,9 @@ public class FarmController {
     }
 
     @GetMapping(Mappings.SEARCH_FARMS)
-    public ModelAndView getSearchFarmsPage(){
-      ModelAndView modelAndView = new ModelAndView(ViewNames.SEARCH_FARMS);
+    public ModelAndView getSearchFarmsPage(ModelAndView modelAndView){
+      modelAndView.setViewName(ViewNames.SEARCH_FARMS);
+      modelAndView.addObject("farms", farmService.findAll());
         return modelAndView;
     }
 

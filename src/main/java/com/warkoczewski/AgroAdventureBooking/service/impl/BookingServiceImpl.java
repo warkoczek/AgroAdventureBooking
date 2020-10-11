@@ -3,12 +3,11 @@ package com.warkoczewski.AgroAdventureBooking.service.impl;
 import com.warkoczewski.AgroAdventureBooking.dto.BookingDTO;
 import com.warkoczewski.AgroAdventureBooking.exception.BookingDatesOverlappingException;
 import com.warkoczewski.AgroAdventureBooking.model.Booking;
-import com.warkoczewski.AgroAdventureBooking.model.Farm;
-import com.warkoczewski.AgroAdventureBooking.model.User;
 import com.warkoczewski.AgroAdventureBooking.repository.BookingRepository;
 import com.warkoczewski.AgroAdventureBooking.repository.FarmRepository;
 import com.warkoczewski.AgroAdventureBooking.repository.UserRepository;
 import com.warkoczewski.AgroAdventureBooking.service.BookingService;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -35,7 +34,7 @@ public class BookingServiceImpl implements BookingService {
         if(!datesAreOverlapping(bookingDTO)){
             booking.setCheck_in(bookingDTO.getCheck_in());
             booking.setCheck_out(bookingDTO.getCheck_out());
-            booking.setUser(userRepository.getUserByEmail(bookingDTO.getUserEmail()));
+            booking.setUser(userRepository.getUserByUsername(bookingDTO.getUsername()));
             booking.setFarm(farmRepository.getFarmByName(bookingDTO.getFarmName()));
             bookingRepository.save(booking);
         }else{

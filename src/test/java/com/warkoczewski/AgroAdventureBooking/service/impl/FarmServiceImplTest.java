@@ -1,7 +1,6 @@
 package com.warkoczewski.AgroAdventureBooking.service.impl;
 
-import com.warkoczewski.AgroAdventureBooking.dto.FarmDTO;
-import com.warkoczewski.AgroAdventureBooking.model.Farm;
+import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
 import com.warkoczewski.AgroAdventureBooking.service.FarmService;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -27,7 +26,7 @@ public class FarmServiceImplTest {
         int expectedListSize = 2;
         boolean expectedIsAvailable = false;
         //when
-        List<FarmDTO> farmsByPhrase = sut.showFarmsByNamePhrase(phrase);
+        List<DisplayFarmDTO> farmsByPhrase = sut.showFarmsByNamePhrase(phrase);
         int actualListSize = farmsByPhrase.size();
         boolean actualIsAvailable = farmsByPhrase.get(1).isAvailable();
         //then
@@ -39,7 +38,7 @@ public class FarmServiceImplTest {
         //given
         String phrase = "Wild Farm";
         //when
-        List<FarmDTO> farmsByPhrase = sut.showFarmsByNamePhrase(phrase);
+        List<DisplayFarmDTO> farmsByPhrase = sut.showFarmsByNamePhrase(phrase);
         boolean actualIsAvailable = farmsByPhrase.get(0).isAvailable();
         //then
         Assert.assertEquals(false, actualIsAvailable);

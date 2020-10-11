@@ -5,10 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class FarmDTO {
-
+@AllArgsConstructor
+public class DisplayFarmDTO {
     private String name;
+    private String description;
     private boolean isAvailable;
 }

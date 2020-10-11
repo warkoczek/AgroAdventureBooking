@@ -1,12 +1,11 @@
 package com.warkoczewski.AgroAdventureBooking.service;
 
-import com.warkoczewski.AgroAdventureBooking.dto.FarmDTO;
+import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
 import com.warkoczewski.AgroAdventureBooking.model.Farm;
 import com.warkoczewski.AgroAdventureBooking.repository.FarmRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -20,14 +19,18 @@ public class FarmService {
         this.modelMapper = modelMapper;
     }
 
-    public List<Farm> findAll(){return farmRepository.findAll();}
+    public List<DisplayFarmDTO> findAll(){
+        return farmRepository.findAll().stream()
+                .map(farm -> modelMapper.map(farm,DisplayFarmDTO.class)).collect(Collectors.toList());
+    }
+
     public Farm showFarmByName(String name) { return farmRepository.getFarmByName(name);
     }
 
 
-    public List<FarmDTO> showFarmsByNamePhrase(String phrase) {
+    public List<DisplayFarmDTO> showFarmsByNamePhrase(String phrase) {
         return farmRepository.findFarmByNameIsContaining(phrase)
-                .stream().map(farm -> modelMapper.map(farm, FarmDTO.class))
+                .stream().map(farm -> modelMapper.map(farm, DisplayFarmDTO.class))
                 .collect(Collectors.toList());
     }
 }

@@ -10,6 +10,8 @@ public final class ViewNames {
     public static final String HOME = "home/homePage";
     public static final String ALL_FARMS = "farm/allFarms";
     public static final String BOOKING_PAGE = "booking/bookingPage";
+    public static final String FARM_BOOKED = "booking/farmBooked";
+    public static final String DELETED = "booking/bookingDeleted";
 
 
     public ViewNames() {

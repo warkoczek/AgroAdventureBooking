@@ -23,6 +23,8 @@ public class Location {
     private double lon;
     @NotNull
     private String greeting;
+    @OneToOne
+    private Farm farm;
 
 
 }

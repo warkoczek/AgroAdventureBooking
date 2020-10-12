@@ -24,14 +24,15 @@ class BookingServiceImplTest {
     @Test
     void createFarmBookingShouldCreateBookingWithCheckInDate20201101() {
         //given
-        BookingDTO bookingDTO = new BookingDTO(LocalDate.of(2020,12,01)
-                , LocalDate.of(2020,12, 20), "Chicken House", "mietek@gmail.com");
-        LocalDate expectedCheckInDate = LocalDate.of(2020,12,01);
+        BookingDTO bookingDTO = new BookingDTO(LocalDate.of(2020,10,20)
+                , LocalDate.of(2020,10, 21), "Chicken House", "mietek@gmail.com");
+        LocalDate expectedCheckInDate = LocalDate.of(2020,10,20);
         //when
         Booking farmBooking = sut.createFarmBooking(bookingDTO);
         LocalDate actualCheckInDate = farmBooking.getCheck_in();
         //then
         Assert.assertEquals(expectedCheckInDate,actualCheckInDate);
     }
+
 
 }

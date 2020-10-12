@@ -4,9 +4,64 @@
 <head th:replace="~{fragments/head :: headFragment}">
     <meta charset="UTF-8">
     <title>Booking Page</title>
+    <link th:rel="stylesheet" th:href="@{/assets/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.css}"/>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} "/>
 </head>
 <body>
 <nav th:insert="~{fragments/head :: mainNavFragment}"></nav><br><br>
+<h1>Booking</h1>
+<!--/*@thymesVar id="bookingDTO" type="com.warkoczewski.AgroAdventureBooking.dto.BookingDTO"*/-->
+<form th:action="@{/booking/bookingPage}" method="post" th:object="${bookingDTO}">
+<!--
+    <div class="form-group">
+        <label for="check_in">Check in:</label>
+        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"
+                   th:field="*{check_in}" id="check_in" placeholder="Date"/>
+            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="check_out">Check out:</label>
+        <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"
+                   th:field="*{check_out}" id="check_out" placeholder="Date"/>
+            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
+            </div>
+        </div>
+    </div>
+-->
+
+    <div class="form-group">
+        <label class="control-label" for="check_in"
+        >Check in</label><input id="check_in" class="form-control" type="date" th:field="*{check_in}" required autofocus="autofocus"/>
+        <span th:if="${#fields.hasErrors('check_in')}" th:errors="*{check_in}">Incorrect check_in date</span>
+    </div>
+
+    <div class="control-label" for="check_out">
+        <label>Check out</label><input id="check_out" class="form-control" type="date"  th:field="*{check_out}" required autofocus="autofocus"/>
+        <span th:if="${#fields.hasErrors()}" th:errors="*{check_out}">Incorrect check_out date</span>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="farmName"
+        >Farm Name</label><input id="farmName" class="form-control" type="text" th:field="*{farmName}" required autofocus="autofocus"/>
+        <span th:if="${#fields.hasErrors()}" th:errors="*{farmName}">Incorrect farm name</span>
+    </div>
+    <div class="control-label" for="username">
+        <label>Username</label>
+        <input id="username" class="form-control" type="text" th:field="*{username}" required autofocus="autofocus"/>
+        <span th:if="${#fields.hasErrors()}" th:errors="*{username}">Incorrect username</span>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Book</button>
+        <span>Back To Farm Searching <a href="/" th:href="@{/farm/searchFarms}">Search Farms</a></span>
+    </div>
+</form>
 <footer th:insert="~{fragments/footer :: footerFragment}"></footer>
 </body>
 </html>

@@ -1,6 +1,6 @@
 package com.warkoczewski.AgroAdventureBooking.controller;
 
-import com.warkoczewski.AgroAdventureBooking.dto.FarmDTO;
+import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
 import com.warkoczewski.AgroAdventureBooking.model.Farm;
 import com.warkoczewski.AgroAdventureBooking.service.FarmService;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class FarmController {
@@ -28,21 +27,22 @@ public class FarmController {
     }
     @GetMapping(Mappings.ALL_FARMS)
     public ModelAndView showAllFarms(ModelAndView modelAndView){
-        List<Farm> allFarms = farmService.findAll();
+        List<DisplayFarmDTO> allFarms = farmService.findAll();
         modelAndView.setViewName("farm/allFarms");
         modelAndView.addObject("allFarms", allFarms);
         return modelAndView;
     }
 
     @GetMapping(Mappings.SEARCH_FARMS)
-    public ModelAndView getSearchFarmsPage(){
-      ModelAndView modelAndView = new ModelAndView(ViewNames.SEARCH_FARMS);
+    public ModelAndView getSearchFarmsPage(ModelAndView modelAndView){
+      modelAndView.setViewName(ViewNames.SEARCH_FARMS);
+      modelAndView.addObject("farms", farmService.findAll());
         return modelAndView;
     }
 
     @PostMapping( Mappings.SEARCH_FARMS)
     public ModelAndView searchFarmByPhrase(@RequestParam("phrase") String phrase){
-        List<FarmDTO> farms = farmService.showFarmsByNamePhrase(phrase);
+        List<DisplayFarmDTO> farms = farmService.showFarmsByNamePhrase(phrase);
         ModelAndView modelAndView = new ModelAndView(ViewNames.SEARCH_FARMS);
         modelAndView.addObject("farms", farms);
         return modelAndView;
@@ -52,7 +52,7 @@ public class FarmController {
 
         ModelAndView modelAndView = new ModelAndView("/main/resources/templates/farm/farm.html");
 
-        Farm farm = farmService.showFarmByName(name);
+        DisplayFarmDTO farm = farmService.showFarmByName(name);
          modelAndView.addObject("farm", farm);
         return modelAndView;
     }

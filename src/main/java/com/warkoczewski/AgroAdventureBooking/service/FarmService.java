@@ -24,7 +24,8 @@ public class FarmService {
                 .map(farm -> modelMapper.map(farm,DisplayFarmDTO.class)).collect(Collectors.toList());
     }
 
-    public Farm showFarmByName(String name) { return farmRepository.getFarmByName(name);
+    public DisplayFarmDTO showFarmByName(String name) {
+        return modelMapper.map(farmRepository.getFarmByName(name), DisplayFarmDTO.class);
     }
 
 

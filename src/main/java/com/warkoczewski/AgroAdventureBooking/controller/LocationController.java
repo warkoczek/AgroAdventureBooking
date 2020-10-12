@@ -21,15 +21,15 @@ public class LocationController {
     public LocationController(LocationServiceImpl locationServiceImpl) {
         this.locationServiceImpl = locationServiceImpl;
     }
-
+/*
     @GetMapping(Mappings.MARKER)
     public String getMap(Model model){
         model.addAttribute("point", new Location(1L, 54.51, 18.53, "Hello Wild Bull"));
         return ViewNames.MAP_TEST_MARKER;
-    }
+    }*/
 
     @GetMapping(Mappings.MARKERS)
-    public String getAllFarms(Model model){
+    public String getAllFarmMarkers(Model model){
         model.addAttribute("points", locationServiceImpl.showAll());
         return ViewNames.MAP;
     }

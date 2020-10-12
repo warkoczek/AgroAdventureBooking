@@ -19,10 +19,12 @@ import javax.validation.Valid;
 public class BookingController {
 
     private final BookingServiceImpl bookingServiceImpl;
+    private final FarmService farmService;
 
 
-    public BookingController(BookingServiceImpl bookingServiceImpl) {
+    public BookingController(BookingServiceImpl bookingServiceImpl, FarmService farmService) {
         this.bookingServiceImpl = bookingServiceImpl;
+        this.farmService = farmService;
     }
 
     @GetMapping(Mappings.BOOKING_PAGE)
@@ -32,7 +34,7 @@ public class BookingController {
     }
 
     @PostMapping(Mappings.BOOKING_PAGE)
-    public String bookFarm(@ModelAttribute("bookingDTO") BookingDTO bookingDTO, BindingResult bindingResult){
+    public String bookFarm(@Valid @ModelAttribute("bookingDTO") BookingDTO bookingDTO, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             return ViewNames.BOOKING_PAGE;
         }

@@ -27,6 +27,8 @@ public class Farm {
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean isAvailable;
+    @OneToOne
+    private Location location;
     @OneToMany
     private Set<Booking> booking;
 

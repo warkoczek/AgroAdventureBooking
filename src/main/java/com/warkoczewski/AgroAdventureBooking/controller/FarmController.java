@@ -52,7 +52,7 @@ public class FarmController {
 
         ModelAndView modelAndView = new ModelAndView("/main/resources/templates/farm/farm.html");
 
-        Farm farm = farmService.showFarmByName(name);
+        DisplayFarmDTO farm = farmService.showFarmByName(name);
          modelAndView.addObject("farm", farm);
         return modelAndView;
     }

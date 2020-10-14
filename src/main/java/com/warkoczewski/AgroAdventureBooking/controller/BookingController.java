@@ -30,13 +30,9 @@ public class BookingController {
     }
 
     @GetMapping(Mappings.BOOKING_PAGE)
-    public ModelAndView getBookingPage(ModelAndView modelAndView){
-        /*modelAndView.setViewName(ViewNames.BOOKING_PAGE);
-        DisplayFarmDTO displayFarmDTO = farmService.showFarmByName(name);
-        modelAndView.addObject("displayFarmDTO", displayFarmDTO);*/
-        modelAndView.setViewName(ViewNames.BOOKING_PAGE);
-        modelAndView.addObject("bookingDTO", new BookingDTO());
-        return modelAndView;
+    public String getBookingPage(Model model){
+        model.addAttribute("bookingDTO", new BookingDTO());
+        return ViewNames.BOOKING_PAGE;
     }
 
     @PostMapping(Mappings.BOOKING_PAGE)

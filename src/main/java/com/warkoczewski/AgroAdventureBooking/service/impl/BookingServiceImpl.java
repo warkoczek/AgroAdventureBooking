@@ -3,13 +3,11 @@ package com.warkoczewski.AgroAdventureBooking.service.impl;
 import com.warkoczewski.AgroAdventureBooking.dto.BookingDTO;
 import com.warkoczewski.AgroAdventureBooking.exception.BookingDTODoesNotExistException;
 import com.warkoczewski.AgroAdventureBooking.exception.BookingDatesOverlappingException;
-import com.warkoczewski.AgroAdventureBooking.exception.BookingNotExistsException;
 import com.warkoczewski.AgroAdventureBooking.model.Booking;
 import com.warkoczewski.AgroAdventureBooking.repository.BookingRepository;
 import com.warkoczewski.AgroAdventureBooking.repository.FarmRepository;
 import com.warkoczewski.AgroAdventureBooking.repository.UserRepository;
 import com.warkoczewski.AgroAdventureBooking.service.BookingService;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -32,11 +30,8 @@ public class BookingServiceImpl implements BookingService {
     @Override
     @Transactional
     public Booking createFarmBooking(BookingDTO bookingDTO) {
-        if(bookingDTO == null){
-            throw new BookingDTODoesNotExistException("Booking DTO does not exist");
-        }
         Booking booking = new Booking();
-        if(!datesAreOverlapping(bookingDTO)){
+        if(datesAreNotOverlapping(bookingDTO)){
             booking.setCheck_in(bookingDTO.getCheck_in());
             booking.setCheck_out(bookingDTO.getCheck_out());
             booking.setUser(userRepository.getUserByUsername(bookingDTO.getUsername()));
@@ -55,11 +50,11 @@ public class BookingServiceImpl implements BookingService {
     }
 
 
-    private boolean datesAreOverlapping(BookingDTO bookingDTO) {
-        return getAllBookings(bookingDTO).values().stream().anyMatch(
+    private boolean datesAreNotOverlapping(BookingDTO bookingDTO) {
+        return getAllBookings(bookingDTO).values().stream().allMatch(
                  getBookingOverlappingPredicate(bookingDTO));
     }
-
+    /*
     private Predicate<Booking> getBookingOverlappingPredicate(BookingDTO bookingDTO) {
         return booking -> ((bookingDTO.getCheck_in().isAfter(booking.getCheck_in())
                     || bookingDTO.getCheck_in().isEqual(booking.getCheck_in()))
@@ -69,16 +64,20 @@ public class BookingServiceImpl implements BookingService {
                     || booking.getCheck_in().isEqual(bookingDTO.getCheck_in()))
                     && (booking.getCheck_in().isBefore(bookingDTO.getCheck_out()))
                     || (booking.getCheck_in().isEqual(bookingDTO.getCheck_out())));
-    }
+    }*/
 
-    private Map<Long, Booking> getAllBookings(BookingDTO bookingDTO) {
+    private Predicate<Booking> getBookingOverlappingPredicate(BookingDTO bookingDTO){
+        return booking -> (bookingDTO.getCheck_out().isBefore(booking.getCheck_in())
+                || bookingDTO.getCheck_in().isAfter(booking.getCheck_out()));
+    }
+    public Map<Long, Booking> getAllBookings(BookingDTO bookingDTO) {
         return bookingRepository.findAll().stream()
                 .filter(getBookingPredicate(bookingDTO))
                 .collect(Collectors.toMap(Booking::getBooking_Id, Function.identity()));
     }
 
-    private Predicate<Booking> getBookingPredicate(BookingDTO bookingDTO) {
-        return booking -> booking.getFarm().getName().equalsIgnoreCase(bookingDTO.getFarmName());
+    public Predicate<Booking> getBookingPredicate(BookingDTO bookingDTO) {
+        return booking -> bookingDTO.getFarmName().equals(booking.getFarm().getName());
     }
 
 

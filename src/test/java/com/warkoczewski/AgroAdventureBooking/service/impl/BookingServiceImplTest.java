@@ -21,12 +21,25 @@ class BookingServiceImplTest {
     @Autowired
     private BookingServiceImpl sut;
 
+
+    @Test
+    void getAllBookingsShouldReturn3BookingsOfFarmNamedChickenHouse(){
+        //given
+        BookingDTO bookingDTO = new BookingDTO(LocalDate.of(2020,10,20)
+                , LocalDate.of(2020,10, 21), "Chicken House", "mietek");
+        int expectedAmount = 3;
+        //when
+        int actualAmount = sut.getAllBookings(bookingDTO).values().size();
+        Assert.assertEquals(expectedAmount,actualAmount);
+
+    }
+
     @Test
     void createFarmBookingShouldCreateBookingWithCheckInDate20201101() {
         //given
-        BookingDTO bookingDTO = new BookingDTO(LocalDate.of(2020,10,20)
-                , LocalDate.of(2020,10, 21), "Chicken House", "mietek@gmail.com");
-        LocalDate expectedCheckInDate = LocalDate.of(2020,10,20);
+        BookingDTO bookingDTO = new BookingDTO(LocalDate.of(2021,01,01)
+                , LocalDate.of(2021,01, 02), "Chicken House", "mietek");
+        LocalDate expectedCheckInDate = LocalDate.of(2021,01,01);
         //when
         Booking farmBooking = sut.createFarmBooking(bookingDTO);
         LocalDate actualCheckInDate = farmBooking.getCheck_in();

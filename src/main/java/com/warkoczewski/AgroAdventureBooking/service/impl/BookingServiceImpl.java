@@ -70,13 +70,13 @@ public class BookingServiceImpl implements BookingService {
         return booking -> (bookingDTO.getCheck_out().isBefore(booking.getCheck_in())
                 || bookingDTO.getCheck_in().isAfter(booking.getCheck_out()));
     }
-    public Map<Long, Booking> getAllBookings(BookingDTO bookingDTO) {
+    private Map<Long, Booking> getAllBookings(BookingDTO bookingDTO) {
         return bookingRepository.findAll().stream()
                 .filter(getBookingPredicate(bookingDTO))
                 .collect(Collectors.toMap(Booking::getBooking_Id, Function.identity()));
     }
 
-    public Predicate<Booking> getBookingPredicate(BookingDTO bookingDTO) {
+    private Predicate<Booking> getBookingPredicate(BookingDTO bookingDTO) {
         return booking -> bookingDTO.getFarmName().equals(booking.getFarm().getName());
     }
 

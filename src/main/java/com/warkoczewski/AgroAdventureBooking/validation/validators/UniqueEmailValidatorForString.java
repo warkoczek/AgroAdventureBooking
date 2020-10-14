@@ -2,7 +2,7 @@ package com.warkoczewski.AgroAdventureBooking.validation.validators;
 
 
 import com.warkoczewski.AgroAdventureBooking.service.ValidationService;
-import com.warkoczewski.AgroAdventureBooking.validation.constraints.UniqueEmail;
+import com.warkoczewski.AgroAdventureBooking.validation.constraints.registration.UniqueEmail;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;

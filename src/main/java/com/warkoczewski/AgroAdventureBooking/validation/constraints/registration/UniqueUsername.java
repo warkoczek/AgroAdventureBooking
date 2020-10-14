@@ -1,4 +1,4 @@
-package com.warkoczewski.AgroAdventureBooking.validation.constraints;
+package com.warkoczewski.AgroAdventureBooking.validation.constraints.registration;
 
 import com.warkoczewski.AgroAdventureBooking.validation.validators.UniqueUsernameValidatorForString;
 

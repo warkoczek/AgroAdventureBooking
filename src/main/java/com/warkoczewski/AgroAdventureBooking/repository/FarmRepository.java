@@ -11,5 +11,6 @@ public interface FarmRepository extends JpaRepository<Farm, Long> {
     List<Farm> findAll();
     Farm getFarmByName(String name);
     List<Farm> findFarmByNameIsContaining(String phrase);
+    boolean existsByName(String farmName);
 
 }

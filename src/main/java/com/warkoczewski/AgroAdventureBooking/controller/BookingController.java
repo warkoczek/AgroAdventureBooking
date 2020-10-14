@@ -1,6 +1,7 @@
 package com.warkoczewski.AgroAdventureBooking.controller;
 
 import com.warkoczewski.AgroAdventureBooking.dto.BookingDTO;
+import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
 import com.warkoczewski.AgroAdventureBooking.model.Farm;
 import com.warkoczewski.AgroAdventureBooking.service.BookingService;
 import com.warkoczewski.AgroAdventureBooking.service.FarmService;
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -28,9 +30,13 @@ public class BookingController {
     }
 
     @GetMapping(Mappings.BOOKING_PAGE)
-    public String getBookingPage(Model model){
-        model.addAttribute("bookingDTO", new BookingDTO());
-        return ViewNames.BOOKING_PAGE;
+    public ModelAndView getBookingPage(ModelAndView modelAndView){
+        /*modelAndView.setViewName(ViewNames.BOOKING_PAGE);
+        DisplayFarmDTO displayFarmDTO = farmService.showFarmByName(name);
+        modelAndView.addObject("displayFarmDTO", displayFarmDTO);*/
+        modelAndView.setViewName(ViewNames.BOOKING_PAGE);
+        modelAndView.addObject("bookingDTO", new BookingDTO());
+        return modelAndView;
     }
 
     @PostMapping(Mappings.BOOKING_PAGE)

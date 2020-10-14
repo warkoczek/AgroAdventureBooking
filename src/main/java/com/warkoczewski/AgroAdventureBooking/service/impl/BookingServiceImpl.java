@@ -1,6 +1,7 @@
 package com.warkoczewski.AgroAdventureBooking.service.impl;
 
 import com.warkoczewski.AgroAdventureBooking.dto.BookingDTO;
+import com.warkoczewski.AgroAdventureBooking.exception.BookingDTODoesNotExistException;
 import com.warkoczewski.AgroAdventureBooking.exception.BookingDatesOverlappingException;
 import com.warkoczewski.AgroAdventureBooking.exception.BookingNotExistsException;
 import com.warkoczewski.AgroAdventureBooking.model.Booking;
@@ -31,6 +32,9 @@ public class BookingServiceImpl implements BookingService {
     @Override
     @Transactional
     public Booking createFarmBooking(BookingDTO bookingDTO) {
+        if(bookingDTO == null){
+            throw new BookingDTODoesNotExistException("Booking DTO does not exist");
+        }
         Booking booking = new Booking();
         if(!datesAreOverlapping(bookingDTO)){
             booking.setCheck_in(bookingDTO.getCheck_in());

@@ -26,7 +26,6 @@ public class BookingDTO {
     @Future(message = "Wrong date. Choose future date")
     private LocalDate check_out;
     @NotBlank(message = "Fill in this field, please")
-    @UniqueFarmName(message = "Farm name does not exist.")
     private String farmName;
     @NotBlank(message = "Fill in this field, please")
     private String username;

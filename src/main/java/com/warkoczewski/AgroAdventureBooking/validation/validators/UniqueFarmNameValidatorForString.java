@@ -13,7 +13,7 @@ import javax.validation.ConstraintValidatorContext;
 @Component
 @Slf4j
 @Scope("prototype")
-public class UniqueFarmNameValidatorForString implements ConstraintValidator<UniqueFarmName, BookingDTO> {
+public class UniqueFarmNameValidatorForString implements ConstraintValidator<UniqueFarmName, String> {
 
     private final ValidationService validationService;
 
@@ -27,7 +27,8 @@ public class UniqueFarmNameValidatorForString implements ConstraintValidator<Uni
     }
 
     @Override
-    public boolean isValid(BookingDTO value, ConstraintValidatorContext context) {
-        return validationService.isUniqueFarmName(value.getFarmName());
+    public boolean isValid(String value, ConstraintValidatorContext context) {
+        return validationService.farmNameExists(value);
     }
+
 }

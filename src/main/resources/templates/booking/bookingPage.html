@@ -12,7 +12,7 @@
 <nav th:insert="~{fragments/head :: mainNavFragment}"></nav><br><br>
 <h1>Booking</h1>
 <!--/*@thymesVar id="bookingDTO" type="com.warkoczewski.AgroAdventureBooking.dto.BookingDTO"*/-->
-<form th:action="@{/booking/bookingPage}" method="post" th:object="${bookingDTO}">
+<form th:action="@{/booking/bookingPage/}" method="post" th:object="${bookingDTO}">
 <!--
     <div class="form-group">
         <label for="check_in">Check in:</label>
@@ -50,7 +50,7 @@
     <div class="form-group">
         <label class="control-label" for="farmName"
         >Farm Name</label>
-        <input id="farmName" class="form-control" type="text" th:field="*{farmName}" required autofocus="autofocus"/>
+        <input id="farmName" class="form-control" th:field="*{farmName}" required autofocus="autofocus"/>
         <span th:if="${#fields.hasErrors()}" th:errors="*{farmName}">Incorrect farm name</span>
     </div>
     <div class="control-label" for="username">

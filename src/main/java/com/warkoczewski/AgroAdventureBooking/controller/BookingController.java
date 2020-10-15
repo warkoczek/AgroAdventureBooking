@@ -1,10 +1,8 @@
 package com.warkoczewski.AgroAdventureBooking.controller;
 
 import com.warkoczewski.AgroAdventureBooking.dto.BookingDTO;
-import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
-import com.warkoczewski.AgroAdventureBooking.model.Farm;
-import com.warkoczewski.AgroAdventureBooking.service.BookingService;
-import com.warkoczewski.AgroAdventureBooking.service.FarmService;
+
+import com.warkoczewski.AgroAdventureBooking.service.impl.FarmServiceImpl;
 import com.warkoczewski.AgroAdventureBooking.service.impl.BookingServiceImpl;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
 import com.warkoczewski.AgroAdventureBooking.util.ViewNames;
@@ -12,8 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import javax.validation.Valid;
 
@@ -21,22 +18,22 @@ import javax.validation.Valid;
 public class BookingController {
 
     private final BookingServiceImpl bookingServiceImpl;
-    private final FarmService farmService;
+    private final FarmServiceImpl farmServiceImpl;
 
 
-    public BookingController(BookingServiceImpl bookingServiceImpl, FarmService farmService) {
+    public BookingController(BookingServiceImpl bookingServiceImpl, FarmServiceImpl farmServiceImpl) {
         this.bookingServiceImpl = bookingServiceImpl;
-        this.farmService = farmService;
+        this.farmServiceImpl = farmServiceImpl;
     }
-    @GetMapping(Mappings.FARM_BOOKED)
-    public String getFarmBookedPage(){
-        return ViewNames.FARM_BOOKED;
-    }
-
     @GetMapping(Mappings.BOOKING_PAGE)
     public String getBookingPage(Model model){
         model.addAttribute("bookingDTO", new BookingDTO());
         return ViewNames.BOOKING_PAGE;
+    }
+
+    @GetMapping(Mappings.FARM_BOOKED)
+    public String getFarmBookedPage(){
+        return ViewNames.FARM_BOOKED;
     }
 
     @PostMapping(Mappings.BOOKING_PAGE)

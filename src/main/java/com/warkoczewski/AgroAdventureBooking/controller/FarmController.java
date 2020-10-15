@@ -2,12 +2,12 @@ package com.warkoczewski.AgroAdventureBooking.controller;
 
 import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
 import com.warkoczewski.AgroAdventureBooking.dto.FarmDTO;
-import com.warkoczewski.AgroAdventureBooking.model.Farm;
-import com.warkoczewski.AgroAdventureBooking.service.FarmService;
+import com.warkoczewski.AgroAdventureBooking.service.impl.FarmServiceImpl;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
 import com.warkoczewski.AgroAdventureBooking.util.ViewNames;
 import org.springframework.stereotype.Controller;
 
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,10 +16,10 @@ import java.util.List;
 @Controller
 public class FarmController {
 
-    private final FarmService farmService;
+    private final FarmServiceImpl farmServiceImpl;
 
-    public FarmController(FarmService farmService) {
-        this.farmService = farmService;
+    public FarmController(FarmServiceImpl farmServiceImpl) {
+        this.farmServiceImpl = farmServiceImpl;
     }
 
     @GetMapping(Mappings.HOME)
@@ -28,7 +28,7 @@ public class FarmController {
     }
     @GetMapping(Mappings.ALL_FARMS)
     public ModelAndView showAllFarms(ModelAndView modelAndView){
-        List<DisplayFarmDTO> allFarms = farmService.findAll();
+        List<DisplayFarmDTO> allFarms = farmServiceImpl.findAll();
         modelAndView.setViewName("farm/allFarms");
         modelAndView.addObject("allFarms", allFarms);
         return modelAndView;
@@ -37,13 +37,13 @@ public class FarmController {
     @GetMapping(Mappings.SEARCH_FARMS)
     public ModelAndView getSearchFarmsPage(ModelAndView modelAndView){
       modelAndView.setViewName(ViewNames.SEARCH_FARMS);
-      modelAndView.addObject("farms", farmService.findAll());
+      modelAndView.addObject("farms", farmServiceImpl.findAll());
         return modelAndView;
     }
 
     @PostMapping( Mappings.SEARCH_FARMS)
     public ModelAndView searchFarmByPhrase(@RequestParam("phrase") String phrase){
-        List<DisplayFarmDTO> farms = farmService.showFarmsByNamePhrase(phrase);
+        List<DisplayFarmDTO> farms = farmServiceImpl.showFarmsByNamePhrase(phrase);
         ModelAndView modelAndView = new ModelAndView(ViewNames.SEARCH_FARMS);
         modelAndView.addObject("farms", farms);
         return modelAndView;
@@ -53,19 +53,22 @@ public class FarmController {
 
         ModelAndView modelAndView = new ModelAndView("/main/resources/templates/farm/farm.html");
 
-        DisplayFarmDTO farm = farmService.showFarmByName(name);
+        DisplayFarmDTO farm = farmServiceImpl.showFarmByName(name);
          modelAndView.addObject("farm", farm);
         return modelAndView;
     }
     @PostMapping()
-    public String createFarm(@ModelAttribute FarmDTO farmDTO){
-
-        return "";
+    public String addFarm(@ModelAttribute FarmDTO farmDTO, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return ViewNames.ADD_FARM;
+        }
+        farmServiceImpl.createFarm(farmDTO);
+        return ViewNames.FARM_CREATED;
     }
 
     @GetMapping(Mappings.DELETE_FARM)
     public String deleteBooking(@PathVariable("booking_Id") Long id){
-        farmService.deleteFarm(id);
+        farmServiceImpl.deleteFarm(id);
         return ViewNames.FARM_DELETED;
     }
 

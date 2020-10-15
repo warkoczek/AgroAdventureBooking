@@ -1,7 +1,6 @@
 package com.warkoczewski.AgroAdventureBooking.service.impl;
 
 import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
-import com.warkoczewski.AgroAdventureBooking.service.FarmService;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,10 +12,10 @@ import java.util.List;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-public class FarmServiceImplTest {
+public class FarmServiceImplImplTest {
 
     @Autowired
-    private FarmService sut;
+    private FarmServiceImpl sut;
 
 
     @Test

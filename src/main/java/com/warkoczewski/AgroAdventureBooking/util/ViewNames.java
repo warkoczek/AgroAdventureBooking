@@ -13,6 +13,8 @@ public final class ViewNames {
     public static final String FARM_BOOKED = "booking/farmBooked";
     public static final String BOOKING_DELETED = "booking/bookingDeleted";
     public static final String FARM_DELETED = "farm/farmDeleted";
+    public static final String ADD_FARM = "farm/addFarm";
+    public static final String FARM_CREATED = "farm/farmCreated";
 
 
     public ViewNames() {

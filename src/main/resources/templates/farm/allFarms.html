@@ -47,6 +47,7 @@
                 <td th:text="${farm.description}"></td>
                 <td th:if="${farm.available}">Available</td>
                 <td th:unless="${farm.available}">Not Available</td>
+                <td><a th:href="@{${farm.imageURL}}">View</a></td>
 
                 <td></td>
             </tr>

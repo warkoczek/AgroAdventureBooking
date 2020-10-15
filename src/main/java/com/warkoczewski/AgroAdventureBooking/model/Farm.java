@@ -21,6 +21,7 @@ public class Farm {
     @NotBlank
     private String name;
     private String description;
+    private String imageURL;
     @OneToOne
     @JoinColumn(name = "address_Id")
     private Address address;

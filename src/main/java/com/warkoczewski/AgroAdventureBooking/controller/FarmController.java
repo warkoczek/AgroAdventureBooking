@@ -1,6 +1,7 @@
 package com.warkoczewski.AgroAdventureBooking.controller;
 
 import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
+import com.warkoczewski.AgroAdventureBooking.dto.FarmDTO;
 import com.warkoczewski.AgroAdventureBooking.model.Farm;
 import com.warkoczewski.AgroAdventureBooking.service.FarmService;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
@@ -56,7 +57,11 @@ public class FarmController {
          modelAndView.addObject("farm", farm);
         return modelAndView;
     }
+    @PostMapping()
+    public String createFarm(@ModelAttribute FarmDTO farmDTO){
 
+        return "";
+    }
 
     @GetMapping(Mappings.DELETE_FARM)
     public String deleteBooking(@PathVariable("booking_Id") Long id){

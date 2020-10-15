@@ -6,5 +6,5 @@ public interface ValidationService {
 
     boolean isUniqueEmail(String email);
 
-
+    boolean farmNameExists(String farmName);
 }

@@ -1,9 +1,9 @@
 package com.warkoczewski.AgroAdventureBooking.dto;
 
-import com.warkoczewski.AgroAdventureBooking.validation.constraints.PasswordCharacter;
-import com.warkoczewski.AgroAdventureBooking.validation.constraints.SamePassword;
-import com.warkoczewski.AgroAdventureBooking.validation.constraints.UniqueEmail;
-import com.warkoczewski.AgroAdventureBooking.validation.constraints.UniqueUsername;
+import com.warkoczewski.AgroAdventureBooking.validation.constraints.registration.PasswordCharacter;
+import com.warkoczewski.AgroAdventureBooking.validation.constraints.registration.SamePassword;
+import com.warkoczewski.AgroAdventureBooking.validation.constraints.registration.UniqueEmail;
+import com.warkoczewski.AgroAdventureBooking.validation.constraints.registration.UniqueUsername;
 import lombok.Data;
 
 

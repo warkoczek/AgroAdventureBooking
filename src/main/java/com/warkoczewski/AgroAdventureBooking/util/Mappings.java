@@ -14,6 +14,8 @@ public final  class Mappings {
     public static final String ALL_FARMS = "farm/allFarms";
     public static final String BOOKING_PAGE = "booking/bookingPage";
     public static final String DELETE_BOOKING = "booking/delete/{booking_Id}";
+    public static final String FARM_BOOKED = "booking/farmBooked";
+    public static final String DELETE_FARM = "farm/delete/{farm_Id}";
 
     public Mappings() {
     }

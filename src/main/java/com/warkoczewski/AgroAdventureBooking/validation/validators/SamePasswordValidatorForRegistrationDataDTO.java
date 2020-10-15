@@ -1,7 +1,7 @@
 package com.warkoczewski.AgroAdventureBooking.validation.validators;
 
 import com.warkoczewski.AgroAdventureBooking.dto.RegistrationDataDTO;
-import com.warkoczewski.AgroAdventureBooking.validation.constraints.SamePassword;
+import com.warkoczewski.AgroAdventureBooking.validation.constraints.registration.SamePassword;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

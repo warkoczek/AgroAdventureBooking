@@ -56,4 +56,12 @@ public class FarmController {
          modelAndView.addObject("farm", farm);
         return modelAndView;
     }
+
+
+    @GetMapping(Mappings.DELETE_FARM)
+    public String deleteBooking(@PathVariable("booking_Id") Long id){
+        farmService.deleteFarm(id);
+        return ViewNames.FARM_DELETED;
+    }
+
 }

@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 public class DisplayFarmDTO {
     private String name;
     private String description;
-    private boolean isAvailable;
+    private boolean available;
+
 }

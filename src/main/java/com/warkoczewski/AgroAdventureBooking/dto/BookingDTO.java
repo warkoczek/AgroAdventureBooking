@@ -1,5 +1,6 @@
 package com.warkoczewski.AgroAdventureBooking.dto;
 
+import com.warkoczewski.AgroAdventureBooking.validation.constraints.booking.UniqueFarmName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,8 +25,9 @@ public class BookingDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Future(message = "Wrong date. Choose future date")
     private LocalDate check_out;
-    @NotBlank(message = "Fill up this field, please")
+    @NotBlank(message = "Fill in this field, please")
+    @UniqueFarmName(message = "Farm name does not exist")
     private String farmName;
-    @NotBlank(message = "Fill up this field, please")
+    @NotBlank(message = "Fill in this field, please")
     private String username;
 }

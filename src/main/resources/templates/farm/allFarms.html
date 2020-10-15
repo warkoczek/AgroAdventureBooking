@@ -31,15 +31,29 @@
 <br>
 
 
-<!--section-->
-<section class="allFarms" th:each="farm : ${allFarms}">
-<div class="farm-info">
-    <h1 th:text="${farm.name}"></h1>
-    <h2 th:text="${farm.description}"></h2>
-    <span th:if="${farm.available}">Available</span>
-    <span th:unless="${farm.available}">Not Available</span>
+<!--table-->
+<div class="container">
+    <div th:if="${not #lists.isEmpty(allFarms)}">
+        <h2>Farms</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Availability</th>
+                <th>Image URL</th>
+            </tr>
+            <tr th:each="farm : ${allFarms}">
+                <td th:text="${farm.name}"></td>
+                <td th:text="${farm.description}"></td>
+                <td th:if="${farm.available}">Available</td>
+                <td th:unless="${farm.available}">Not Available</td>
+
+                <td></td>
+            </tr>
+        </table>
+    </div>
 </div>
-</section>
+
 
 <footer th:replace="~{fragments/footer :: footerFragment}">Made by Adam Warkoczewski</footer>
 </body>

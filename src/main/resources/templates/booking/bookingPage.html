@@ -49,7 +49,8 @@
 
     <div class="form-group">
         <label class="control-label" for="farmName"
-        >Farm Name</label><input id="farmName" class="form-control" type="text" th:field="*{farmName}" required autofocus="autofocus"/>
+        >Farm Name</label>
+        <input id="farmName" class="form-control" type="text" th:field="*{farmName}" required autofocus="autofocus"/>
         <span th:if="${#fields.hasErrors()}" th:errors="*{farmName}">Incorrect farm name</span>
     </div>
     <div class="control-label" for="username">

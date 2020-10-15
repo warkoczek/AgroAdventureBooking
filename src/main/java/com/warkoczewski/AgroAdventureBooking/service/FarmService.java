@@ -34,4 +34,8 @@ public class FarmService {
                 .stream().map(farm -> modelMapper.map(farm, DisplayFarmDTO.class))
                 .collect(Collectors.toList());
     }
+
+    public void deleteFarm(Long id) {
+        farmRepository.findById(id).ifPresent(farmRepository :: delete);
+    }
 }

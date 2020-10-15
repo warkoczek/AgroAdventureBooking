@@ -1,6 +1,7 @@
 package com.warkoczewski.AgroAdventureBooking.controller;
 
 import com.warkoczewski.AgroAdventureBooking.dto.BookingDTO;
+import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
 import com.warkoczewski.AgroAdventureBooking.model.Farm;
 import com.warkoczewski.AgroAdventureBooking.service.BookingService;
 import com.warkoczewski.AgroAdventureBooking.service.FarmService;
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -25,6 +27,10 @@ public class BookingController {
     public BookingController(BookingServiceImpl bookingServiceImpl, FarmService farmService) {
         this.bookingServiceImpl = bookingServiceImpl;
         this.farmService = farmService;
+    }
+    @GetMapping(Mappings.FARM_BOOKED)
+    public String getFarmBookedPage(){
+        return ViewNames.FARM_BOOKED;
     }
 
     @GetMapping(Mappings.BOOKING_PAGE)
@@ -44,6 +50,6 @@ public class BookingController {
     @GetMapping(Mappings.DELETE_BOOKING)
     public String deleteBooking(@PathVariable("booking_Id") Long id){
         bookingServiceImpl.deleteBooking(id);
-        return ViewNames.DELETED;
+        return ViewNames.BOOKING_DELETED;
     }
 }

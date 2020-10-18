@@ -22,7 +22,8 @@ public class Booking {
     private LocalDate check_in;
     @Column(name = "check_out")
     private LocalDate check_out;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "booking_id", nullable = false)
     private Farm farm;
     @ManyToOne
     private User user;

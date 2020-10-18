@@ -15,6 +15,7 @@ public final class ViewNames {
     public static final String FARM_DELETED = "farm/farmDeleted";
     public static final String ADD_FARM = "farm/addFarm";
     public static final String FARM_CREATED = "farm/farmCreated";
+    public static final String ADDRESS_DELETED = "address/addressDeleted";
 
 
     public ViewNames() {

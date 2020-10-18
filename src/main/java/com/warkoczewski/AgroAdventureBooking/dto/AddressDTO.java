@@ -7,10 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class FarmDTO {
-    private String name;
-    private String description;
-    private String imageURL;
-
-
+public class AddressDTO {
+    private String country;
+    private String village;
+    private String street;
 }

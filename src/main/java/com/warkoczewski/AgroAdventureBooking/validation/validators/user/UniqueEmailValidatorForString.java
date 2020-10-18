@@ -1,4 +1,4 @@
-package com.warkoczewski.AgroAdventureBooking.validation.validators;
+package com.warkoczewski.AgroAdventureBooking.validation.validators.user;
 
 
 import com.warkoczewski.AgroAdventureBooking.service.ValidationService;

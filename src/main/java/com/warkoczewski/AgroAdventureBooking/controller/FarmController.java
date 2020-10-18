@@ -56,7 +56,7 @@ public class FarmController {
         DisplayFarmDTO farm = farmServiceImpl.showFarmByName(name);
          modelAndView.addObject("farm", farm);
         return modelAndView;
-    }
+    }/*
     @PostMapping()
     public String addFarm(@ModelAttribute FarmDTO farmDTO, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
@@ -64,10 +64,10 @@ public class FarmController {
         }
         farmServiceImpl.createFarm(farmDTO);
         return ViewNames.FARM_CREATED;
-    }
+    }*/
 
     @GetMapping(Mappings.DELETE_FARM)
-    public String deleteBooking(@PathVariable("booking_Id") Long id){
+    public String deleteFarm(@PathVariable("farm_Id") Long id){
         farmServiceImpl.deleteFarm(id);
         return ViewNames.FARM_DELETED;
     }

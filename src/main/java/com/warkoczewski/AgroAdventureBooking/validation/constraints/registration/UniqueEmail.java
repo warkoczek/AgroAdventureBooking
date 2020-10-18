@@ -1,6 +1,6 @@
 package com.warkoczewski.AgroAdventureBooking.validation.constraints.registration;
 
-import com.warkoczewski.AgroAdventureBooking.validation.validators.UniqueEmailValidatorForString;
+import com.warkoczewski.AgroAdventureBooking.validation.validators.user.UniqueEmailValidatorForString;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

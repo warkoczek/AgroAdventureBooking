@@ -1,12 +1,17 @@
 package com.warkoczewski.AgroAdventureBooking.service.impl;
 
+import com.warkoczewski.AgroAdventureBooking.dto.AddressDTO;
 import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
 import com.warkoczewski.AgroAdventureBooking.dto.FarmDTO;
+import com.warkoczewski.AgroAdventureBooking.model.Address;
 import com.warkoczewski.AgroAdventureBooking.model.Farm;
+import com.warkoczewski.AgroAdventureBooking.repository.AddressRepository;
 import com.warkoczewski.AgroAdventureBooking.repository.FarmRepository;
+import com.warkoczewski.AgroAdventureBooking.repository.LocationRepository;
 import com.warkoczewski.AgroAdventureBooking.service.FarmService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,11 +19,16 @@ import java.util.stream.Collectors;
 public class FarmServiceImpl implements FarmService {
 
     private final FarmRepository farmRepository;
+    private final AddressRepository addressRepository;
+    private final LocationRepository locationRepository;
     private final ModelMapper modelMapper;
 
-    public FarmServiceImpl(FarmRepository farmRepository, ModelMapper modelMapper) {
+    public FarmServiceImpl(FarmRepository farmRepository, AddressRepository addressRepository
+            , LocationRepository locationRepository, ModelMapper modelMapper) {
         this.farmRepository = farmRepository;
         this.modelMapper = modelMapper;
+        this.addressRepository = addressRepository;
+        this.locationRepository = locationRepository;
     }
     @Override
     public List<DisplayFarmDTO> findAll(){
@@ -41,7 +51,17 @@ public class FarmServiceImpl implements FarmService {
         farmRepository.findById(id).ifPresent(farmRepository :: delete);
     }
     @Override
-    public Farm createFarm(FarmDTO farmDTO) {
-        return null;
+    public Farm createFarm(FarmDTO farmDTO, AddressDTO addressDTO) {
+        Farm farmToSave = modelMapper.map(farmDTO, Farm.class);
+        farmToSave.setAvailable(true);
+        Address address = modelMapper.map(addressDTO, Address.class);
+        //set child reference(address) in the parent entity(farm)
+        farmToSave.setAddress(address);
+        //set parent reference(farm) in the child entity(address)
+        address.setFarm(farmToSave);
+        /*Location locationToSave = modelMapper.map(locationDTO, Location.class);
+        locationRepository.save(locationToSave);
+        farmToSave.setLocation(locationToSave);*/
+        return farmRepository.save(farmToSave);
     }
 }

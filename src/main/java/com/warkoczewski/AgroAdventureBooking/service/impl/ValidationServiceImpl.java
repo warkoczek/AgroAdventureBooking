@@ -27,4 +27,9 @@ public class ValidationServiceImpl implements ValidationService {
     public boolean farmNameExists(String farmName) {
         return farmRepository.existsByName(farmName);
     }
+
+    @Override
+    public boolean isUniqueFarmName(String farmName) { return !farmRepository.existsByName(farmName);
+    }
+
 }

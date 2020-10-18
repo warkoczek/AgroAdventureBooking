@@ -22,15 +22,14 @@ public class Farm {
     private String name;
     private String description;
     private String imageURL;
-    @OneToOne
-    @JoinColumn(name = "address_Id")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "farm")
     private Address address;
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean isAvailable;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "farm")
     private Location location;
-    @OneToMany
+    @OneToMany(mappedBy = "farm", cascade = {CascadeType.ALL, CascadeType.PERSIST}, fetch = FetchType.LAZY)
     private Set<Booking> booking;
 
 

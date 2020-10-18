@@ -1,8 +1,7 @@
-package com.warkoczewski.AgroAdventureBooking.validation.validators;
+package com.warkoczewski.AgroAdventureBooking.validation.validators.farm;
 
-import com.warkoczewski.AgroAdventureBooking.dto.BookingDTO;
 import com.warkoczewski.AgroAdventureBooking.service.ValidationService;
-import com.warkoczewski.AgroAdventureBooking.validation.constraints.booking.UniqueFarmName;
+import com.warkoczewski.AgroAdventureBooking.validation.constraints.booking.FarmNameExists;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -13,16 +12,16 @@ import javax.validation.ConstraintValidatorContext;
 @Component
 @Slf4j
 @Scope("prototype")
-public class UniqueFarmNameValidatorForString implements ConstraintValidator<UniqueFarmName, String> {
+public class FarmNameExistsValidatorForString implements ConstraintValidator<FarmNameExists, String> {
 
     private final ValidationService validationService;
 
-    public UniqueFarmNameValidatorForString(ValidationService validationService) {
+    public FarmNameExistsValidatorForString(ValidationService validationService) {
         this.validationService = validationService;
     }
 
     @Override
-    public void initialize(UniqueFarmName constraint) {
+    public void initialize(FarmNameExists constraint) {
 
     }
 

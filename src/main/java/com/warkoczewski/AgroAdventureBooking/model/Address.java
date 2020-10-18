@@ -17,6 +17,7 @@ public class Address {
     private String country;
     private String village;
     private String street;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "address_Id", nullable = false)
     private Farm farm;
 }

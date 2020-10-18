@@ -20,7 +20,7 @@ import java.time.LocalDate;
 class BookingServiceImplTest {
     @Autowired
     private BookingServiceImpl sut;
-
+/*
     @Test
     void createFarmBookingShouldCreateBookingWithCheckInDate20201101() {
         //given
@@ -32,7 +32,7 @@ class BookingServiceImplTest {
         LocalDate actualCheckInDate = farmBooking.getCheck_in();
         //then
         Assert.assertEquals(expectedCheckInDate,actualCheckInDate);
-    }
+    }*/
 
 
 }

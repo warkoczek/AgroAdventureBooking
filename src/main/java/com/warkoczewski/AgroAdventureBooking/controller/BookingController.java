@@ -35,7 +35,7 @@ public class BookingController {
     public String getFarmBookedPage(){
         return ViewNames.FARM_BOOKED;
     }
-
+/*
     @PostMapping(Mappings.BOOKING_PAGE)
     public String bookFarm(@Valid @ModelAttribute("bookingDTO") BookingDTO bookingDTO, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
@@ -48,5 +48,5 @@ public class BookingController {
     public String deleteBooking(@PathVariable("booking_Id") Long id){
         bookingServiceImpl.deleteBooking(id);
         return ViewNames.BOOKING_DELETED;
-    }
+    }*/
 }

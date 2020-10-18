@@ -3,6 +3,7 @@ package com.warkoczewski.AgroAdventureBooking.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,7 +12,7 @@ import java.util.Set;
 @ToString(exclude = "password", callSuper = true)
 @Data
 @NoArgsConstructor
-public class User {
+public class User implements Serializable {
     @Id
     private String username;
 
@@ -20,9 +21,6 @@ public class User {
     private boolean active = Boolean.FALSE;
 
     private String password;
-
-    @OneToMany
-    private Set<Booking> booking;
 
     @ManyToMany
     private Set<Role> roles = new HashSet<>();

@@ -2,7 +2,6 @@ package com.warkoczewski.AgroAdventureBooking.service.impl;
 
 import com.warkoczewski.AgroAdventureBooking.repository.FarmRepository;
 import com.warkoczewski.AgroAdventureBooking.repository.UserRepository;
-import com.warkoczewski.AgroAdventureBooking.service.FarmService;
 import com.warkoczewski.AgroAdventureBooking.service.ValidationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

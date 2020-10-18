@@ -1,8 +1,7 @@
 package com.warkoczewski.AgroAdventureBooking.controller;
 
 import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
-import com.warkoczewski.AgroAdventureBooking.model.Farm;
-import com.warkoczewski.AgroAdventureBooking.service.FarmService;
+import com.warkoczewski.AgroAdventureBooking.service.impl.FarmServiceImpl;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
 import com.warkoczewski.AgroAdventureBooking.util.ViewNames;
 import org.springframework.stereotype.Controller;
@@ -15,9 +14,9 @@ import java.util.List;
 @Controller
 public class FarmController {
 
-    private final FarmService farmService;
+    private final FarmServiceImpl farmService;
 
-    public FarmController(FarmService farmService) {
+    public FarmController(FarmServiceImpl farmService) {
         this.farmService = farmService;
     }
 

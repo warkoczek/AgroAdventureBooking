@@ -17,6 +17,6 @@ public class Address {
     private String country;
     private String village;
     private String street;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "address")
     private Farm farm;
 }

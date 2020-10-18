@@ -21,8 +21,8 @@ public class Farm {
     @NotBlank
     private String name;
     private String description;
-    @OneToOne
-    @JoinColumn(name = "address_Id")
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_address_id")
     private Address address;
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     @Type(type = "org.hibernate.type.NumericBooleanType")

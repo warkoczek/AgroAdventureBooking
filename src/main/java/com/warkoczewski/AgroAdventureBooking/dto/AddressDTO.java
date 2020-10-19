@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LocationDTO {
-
-    private double lat;
-    private double lon;
-    private String greeting;
+public class AddressDTO {
+    private String country;
+    private String town;
+    private Long house;
 }

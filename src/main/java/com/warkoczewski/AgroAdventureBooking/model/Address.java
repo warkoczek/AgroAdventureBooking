@@ -15,8 +15,8 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long address_Id;
     private String country;
-    private String village;
-    private String street;
-    @OneToOne
+    private String town;
+    private Long house;
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "address")
     private Farm farm;
 }

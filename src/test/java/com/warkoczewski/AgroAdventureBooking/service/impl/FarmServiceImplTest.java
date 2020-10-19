@@ -1,7 +1,11 @@
 package com.warkoczewski.AgroAdventureBooking.service.impl;
 
+import com.warkoczewski.AgroAdventureBooking.dto.AddressDTO;
 import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
-import com.warkoczewski.AgroAdventureBooking.service.FarmService;
+import com.warkoczewski.AgroAdventureBooking.dto.FarmDTO;
+import com.warkoczewski.AgroAdventureBooking.dto.LocationDTO;
+import com.warkoczewski.AgroAdventureBooking.model.Farm;
+import com.warkoczewski.AgroAdventureBooking.repository.FarmRepository;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -9,14 +13,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import javax.validation.constraints.AssertTrue;
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 public class FarmServiceImplTest {
 
     @Autowired
-    private FarmService sut;
+    private FarmServiceImpl sut;
 
 
     @Test
@@ -42,5 +48,29 @@ public class FarmServiceImplTest {
         boolean actualIsAvailable = farmsByPhrase.get(0).isAvailable();
         //then
         Assert.assertEquals(false, actualIsAvailable);
+    }
+
+    @Test
+    void createFarmReturnsFarmId1() {
+        //given
+        FarmDTO farmDTO = new FarmDTO("Chicken farm", "chickens around here");
+        AddressDTO addressDTO = new AddressDTO("Belgium", "Brussel", 1l);
+        LocationDTO locationDTO = new LocationDTO(50.8503, 4.3517, "Hi from Belgium chickens");
+        Long expectedFarmId = 1l;
+        //when
+        Long actualFarmId = sut.addFarm(farmDTO, addressDTO, locationDTO).getFarm_Id();
+        //then
+        Assert.assertEquals(expectedFarmId,actualFarmId);
+
+    }
+
+    @Test
+    void deleteFarmReturnsFarmsListSize0() {
+       Long id = 1l;
+       int expectedSize = 0;
+       sut.deleteFarm(id);
+        int actualSize = sut.findAll().size();
+        Assert.assertEquals(expectedSize, actualSize);
+
     }
 }

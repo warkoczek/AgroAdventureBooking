@@ -21,13 +21,14 @@ public class Farm {
     @NotBlank
     private String name;
     private String description;
-    @OneToOne
-    @JoinColumn(name = "address_Id")
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_address_id")
     private Address address;
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean isAvailable;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "location_location_id")
     private Location location;
     @OneToMany
     private Set<Booking> booking;

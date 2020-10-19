@@ -5,11 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class LocationDTO {
-
-    private double lat;
-    private double lon;
-    private String greeting;
+@AllArgsConstructor
+public class FarmDTO {
+    private String name;
+    private String description;
 }

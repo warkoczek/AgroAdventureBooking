@@ -1,19 +1,21 @@
 package com.warkoczewski.AgroAdventureBooking.service.impl;
 
 import com.warkoczewski.AgroAdventureBooking.dto.BookingDTO;
+import com.warkoczewski.AgroAdventureBooking.exception.BookingDatesOverlappingException;
 import com.warkoczewski.AgroAdventureBooking.model.Booking;
-import com.warkoczewski.AgroAdventureBooking.model.Farm;
-import com.warkoczewski.AgroAdventureBooking.model.User;
-import com.warkoczewski.AgroAdventureBooking.repository.FarmRepository;
-import com.warkoczewski.AgroAdventureBooking.repository.UserRepository;
 import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
@@ -22,20 +24,33 @@ class BookingServiceImplTest {
     private BookingServiceImpl sut;
 
     @Test
-    void createFarmBookingShouldCreateBookingWithCheckInDate20201101() {
+    @Transactional
+    void createBookingShouldThrowAnExceptionWithMessageForOverlappingCheckInDates() {
         //given
-        BookingDTO bookingDTO = new BookingDTO(LocalDate.of(2021,01,01)
-                , LocalDate.of(2021,01, 02), "Chicken farm", "czulik");
-        LocalDate expectedCheckInDate = LocalDate.of(2021,01,01);
+        BookingDTO bookingDTO = new BookingDTO(LocalDate.of(2020,11,01)
+                , LocalDate.of(2021,01, 02), "Potato Farm", "dellan");
+        LocalDate expectedCheckInDate = LocalDate.of(2020,11,01);
+        assertThrows(BookingDatesOverlappingException.class, () -> sut.createBooking(bookingDTO));
+
+    }
+
+    @Test
+    @Transactional
+    void createBookingShouldCreateBookingWithCheckInDate() {
+        //given
+        BookingDTO bookingDTO = new BookingDTO(LocalDate.of(2020,11,01)
+                , LocalDate.of(2021,01, 02), "Potato Farm", "dellan");
+        LocalDate expectedCheckInDate = LocalDate.of(2020,11,01);
         //when
-        Booking farmBooking = sut.createFarmBooking(bookingDTO);
+        Booking farmBooking = sut.createBooking(bookingDTO);
         LocalDate actualCheckInDate = farmBooking.getCheck_in();
         //then
         Assert.assertEquals(expectedCheckInDate,actualCheckInDate);
     }
 
     @Test
-    void deleteFarmBooking() {
+    @Transactional
+    void deleteBooking() {
         //given
         Long id  = 1l;
         int expectedSize = 0;

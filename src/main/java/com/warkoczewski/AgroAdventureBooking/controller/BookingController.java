@@ -39,7 +39,7 @@ public class BookingController {
         if(bindingResult.hasErrors()){
             return ViewNames.BOOKING_PAGE;
         }
-        bookingServiceImpl.createFarmBooking(bookingDTO);
+        bookingServiceImpl.createBooking(bookingDTO);
         return ViewNames.FARM_BOOKED;
     }
     @GetMapping(Mappings.DELETE_BOOKING)

@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class BookingServiceImpl implements BookingService {
+public class BookingServiceImpl implements BookingService{
 
     private final BookingRepository bookingRepository;
     private final UserRepository userRepository;
@@ -29,7 +29,7 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     @Transactional
-    public Booking createFarmBooking(BookingDTO bookingDTO) {
+    public Booking createBooking(BookingDTO bookingDTO) {
         Booking booking = new Booking();
         if(datesAreNotOverlapping(bookingDTO)){
             booking.setCheck_in(bookingDTO.getCheck_in());
@@ -54,17 +54,6 @@ public class BookingServiceImpl implements BookingService {
         return getAllBookings(bookingDTO).values().stream().allMatch(
                  getBookingOverlappingPredicate(bookingDTO));
     }
-    /*
-    private Predicate<Booking> getBookingOverlappingPredicate(BookingDTO bookingDTO) {
-        return booking -> ((bookingDTO.getCheck_in().isAfter(booking.getCheck_in())
-                    || bookingDTO.getCheck_in().isEqual(booking.getCheck_in()))
-                    && (bookingDTO.getCheck_in().isBefore(booking.getCheck_out())
-                    || bookingDTO.getCheck_in().isEqual(booking.getCheck_out())))
-                    || ((booking.getCheck_in().isAfter(bookingDTO.getCheck_in())
-                    || booking.getCheck_in().isEqual(bookingDTO.getCheck_in()))
-                    && (booking.getCheck_in().isBefore(bookingDTO.getCheck_out()))
-                    || (booking.getCheck_in().isEqual(bookingDTO.getCheck_out())));
-    }*/
 
     private Predicate<Booking> getBookingOverlappingPredicate(BookingDTO bookingDTO){
         return booking -> (bookingDTO.getCheck_out().isBefore(booking.getCheck_in())
@@ -84,4 +73,5 @@ public class BookingServiceImpl implements BookingService {
     public List<Booking> findAll() {
         return bookingRepository.findAll();
     }
+
 }

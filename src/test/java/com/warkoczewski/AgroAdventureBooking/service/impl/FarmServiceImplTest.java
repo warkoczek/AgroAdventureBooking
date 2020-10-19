@@ -12,6 +12,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.validation.constraints.AssertTrue;
 import java.util.List;
@@ -51,11 +52,12 @@ public class FarmServiceImplTest {
     }
 
     @Test
+    @Transactional
     void createFarmReturnsFarmId2() {
         //given
-        FarmDTO farmDTO = new FarmDTO("Chicken farm", "chickens around here");
-        AddressDTO addressDTO = new AddressDTO("Belgium", "Brussel", 1l);
-        LocationDTO locationDTO = new LocationDTO(50.8503, 4.3517, "Hi from Belgium chickens");
+        FarmDTO farmDTO = new FarmDTO("Potato Farm", "Potato as big as your head");
+        AddressDTO addressDTO = new AddressDTO("Poland", "Żerniki", 17l);
+        LocationDTO locationDTO = new LocationDTO(52.47, 17.33, "Hi from head-size potato");
         Long expectedFarmId = 2l;
         //when
         Long actualFarmId = sut.addFarm(farmDTO, addressDTO, locationDTO).getFarm_Id();
@@ -64,6 +66,7 @@ public class FarmServiceImplTest {
 
     }
     @Test
+    @Transactional
     void deleteFarmReturnsFarmsListSize0() {
        Long id = 1l;
        int expectedSize = 0;

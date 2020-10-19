@@ -3,6 +3,7 @@ package com.warkoczewski.AgroAdventureBooking.service.impl;
 import com.warkoczewski.AgroAdventureBooking.dto.AddressDTO;
 import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
 import com.warkoczewski.AgroAdventureBooking.dto.FarmDTO;
+import com.warkoczewski.AgroAdventureBooking.dto.LocationDTO;
 import com.warkoczewski.AgroAdventureBooking.model.Farm;
 import com.warkoczewski.AgroAdventureBooking.repository.FarmRepository;
 import org.junit.Assert;
@@ -54,9 +55,10 @@ public class FarmServiceImplTest {
         //given
         FarmDTO farmDTO = new FarmDTO("Chicken farm", "chickens around here");
         AddressDTO addressDTO = new AddressDTO("Belgium", "Brussel", 1l);
+        LocationDTO locationDTO = new LocationDTO(50.8503, 4.3517, "Hi from Belgium chickens");
         Long expectedFarmId = 1l;
         //when
-        Long actualFarmId = sut.addFarm(farmDTO, addressDTO).getFarm_Id();
+        Long actualFarmId = sut.addFarm(farmDTO, addressDTO, locationDTO).getFarm_Id();
         //then
         Assert.assertEquals(expectedFarmId,actualFarmId);
 

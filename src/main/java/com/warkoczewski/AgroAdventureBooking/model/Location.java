@@ -23,7 +23,7 @@ public class Location {
     private double lon;
     @NotNull
     private String greeting;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "location")
     private Farm farm;
 
 

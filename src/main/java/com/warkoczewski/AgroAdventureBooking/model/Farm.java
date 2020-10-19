@@ -27,7 +27,8 @@ public class Farm {
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean isAvailable;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "location_location_id")
     private Location location;
     @OneToMany
     private Set<Booking> booking;

@@ -3,8 +3,10 @@ package com.warkoczewski.AgroAdventureBooking.service.impl;
 import com.warkoczewski.AgroAdventureBooking.dto.AddressDTO;
 import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
 import com.warkoczewski.AgroAdventureBooking.dto.FarmDTO;
+import com.warkoczewski.AgroAdventureBooking.dto.LocationDTO;
 import com.warkoczewski.AgroAdventureBooking.model.Address;
 import com.warkoczewski.AgroAdventureBooking.model.Farm;
+import com.warkoczewski.AgroAdventureBooking.model.Location;
 import com.warkoczewski.AgroAdventureBooking.repository.FarmRepository;
 import com.warkoczewski.AgroAdventureBooking.service.FarmService;
 import org.modelmapper.ModelMapper;
@@ -46,12 +48,15 @@ public class FarmServiceImpl implements FarmService {
     }
 
     @Override
-    public Farm addFarm(FarmDTO farmDTO, AddressDTO addressDTO) {
+    public Farm addFarm(FarmDTO farmDTO, AddressDTO addressDTO, LocationDTO locationDTO) {
         Farm farm = modelMapper.map(farmDTO, Farm.class);
         Address address = modelMapper.map(addressDTO, Address.class);
+        Location location = modelMapper.map(locationDTO, Location.class);
         farm.setAvailable(true);
         farm.setAddress(address);
+        farm.setLocation(location);
         address.setFarm(farm);
+        location.setFarm(farm);
         return farmRepository.save(farm);
     }
 

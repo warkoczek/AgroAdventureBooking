@@ -30,8 +30,7 @@ public class Farm {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "location_location_id")
     private Location location;
-    @OneToMany
-    private Set<Booking> booking;
+
 
 
 }

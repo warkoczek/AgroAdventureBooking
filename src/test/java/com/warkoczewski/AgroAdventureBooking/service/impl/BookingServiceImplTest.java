@@ -25,7 +25,7 @@ class BookingServiceImplTest {
     void createFarmBookingShouldCreateBookingWithCheckInDate20201101() {
         //given
         BookingDTO bookingDTO = new BookingDTO(LocalDate.of(2021,01,01)
-                , LocalDate.of(2021,01, 02), "Chicken House", "mietek");
+                , LocalDate.of(2021,01, 02), "Chicken farm", "czulik");
         LocalDate expectedCheckInDate = LocalDate.of(2021,01,01);
         //when
         Booking farmBooking = sut.createFarmBooking(bookingDTO);
@@ -34,5 +34,13 @@ class BookingServiceImplTest {
         Assert.assertEquals(expectedCheckInDate,actualCheckInDate);
     }
 
-
+    @Test
+    void deleteFarmBooking() {
+        //given
+        Long id  = 1l;
+        int expectedSize = 0;
+        //when
+        sut.deleteBooking(id);
+        int actualSize = sut.findAll().size();
+    }
 }

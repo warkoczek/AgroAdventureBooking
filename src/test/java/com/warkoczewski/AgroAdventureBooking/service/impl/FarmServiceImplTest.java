@@ -51,19 +51,18 @@ public class FarmServiceImplTest {
     }
 
     @Test
-    void createFarmReturnsFarmId1() {
+    void createFarmReturnsFarmId2() {
         //given
         FarmDTO farmDTO = new FarmDTO("Chicken farm", "chickens around here");
         AddressDTO addressDTO = new AddressDTO("Belgium", "Brussel", 1l);
         LocationDTO locationDTO = new LocationDTO(50.8503, 4.3517, "Hi from Belgium chickens");
-        Long expectedFarmId = 1l;
+        Long expectedFarmId = 2l;
         //when
         Long actualFarmId = sut.addFarm(farmDTO, addressDTO, locationDTO).getFarm_Id();
         //then
         Assert.assertEquals(expectedFarmId,actualFarmId);
 
     }
-
     @Test
     void deleteFarmReturnsFarmsListSize0() {
        Long id = 1l;

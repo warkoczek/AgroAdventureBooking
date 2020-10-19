@@ -81,4 +81,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
 
+    public List<Booking> findAll() {
+        return bookingRepository.findAll();
+    }
 }

@@ -24,7 +24,7 @@ class RegistrationServiceImplTest {
 
     @Test
     @Transactional
-    void registerShouldCreateANewUserWithUsernameCzulik() {
+    void registerShouldCreateANewUserWithUsernameMirek() {
         //given
         RegistrationDataDTO registrationDataDTO = new RegistrationDataDTO("mirek","mirek@yahoo.com","Treleokk", "Treleokk");
         String expectedUsername = "mirek";

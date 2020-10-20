@@ -52,7 +52,7 @@ public class FarmServiceImpl implements FarmService {
         Farm farm = modelMapper.map(farmDTO, Farm.class);
         Address address = modelMapper.map(addressDTO, Address.class);
         Location location = modelMapper.map(locationDTO, Location.class);
-        farm.setAvailable(true);
+        farm.setAvailable(farmDTO.isAvailable());
         farm.setAddress(address);
         farm.setLocation(location);
         address.setFarm(farm);

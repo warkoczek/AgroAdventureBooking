@@ -29,7 +29,7 @@ class BookingServiceImplTest {
         //given
         BookingDTO bookingDTO = new BookingDTO(LocalDate.of(2020,11,01)
                 , LocalDate.of(2021,01, 02), "Potato Farm", "dellan");
-        LocalDate expectedCheckInDate = LocalDate.of(2020,11,01);
+       //when and then
         assertThrows(BookingDatesOverlappingException.class, () -> sut.createBooking(bookingDTO));
 
     }

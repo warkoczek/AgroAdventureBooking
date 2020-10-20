@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class FarmDTO {
     private String name;
     private String description;
+    private boolean isAvailable;
 }

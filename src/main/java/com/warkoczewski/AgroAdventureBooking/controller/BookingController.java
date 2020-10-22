@@ -27,6 +27,11 @@ public class BookingController {
     public String getFarmBookedPage(){
         return ViewNames.FARM_BOOKED;
     }
+    @GetMapping(Mappings.BOOKING_NOT_POSSIBLE)
+    public String getBookingNotPossiblePage(){
+        return ViewNames.BOOKING_NOT_POSSIBLE;
+    }
+
 
     @GetMapping(Mappings.BOOKING_PAGE)
     public String getBookingPage(Model model){
@@ -39,7 +44,7 @@ public class BookingController {
         if(bindingResult.hasErrors()){
             return ViewNames.BOOKING_PAGE;
         }
-        bookingServiceImpl.createFarmBooking(bookingDTO);
+        bookingServiceImpl.createBooking(bookingDTO);
         return ViewNames.FARM_BOOKED;
     }
     @GetMapping(Mappings.DELETE_BOOKING)

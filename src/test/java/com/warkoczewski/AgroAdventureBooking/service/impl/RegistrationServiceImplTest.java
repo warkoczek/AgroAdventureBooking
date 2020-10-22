@@ -10,6 +10,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,13 +23,14 @@ class RegistrationServiceImplTest {
     private RegistrationService registrationService;
 
     @Test
-    void registerShouldCreateANewUserWithUsernameCzulik() {
+    @Transactional
+    void registerShouldCreateANewUserWithUsernameMirek() {
         //given
-        RegistrationDataDTO registrationDataDTO = new RegistrationDataDTO("czulik","czu@wp.pl","haha", "haha");
-        String expectedUsername = "czulik";
+        RegistrationDataDTO registrationDataDTO = new RegistrationDataDTO("mirek","mirek@yahoo.com","Treleokk", "Treleokk");
+        String expectedUsername = "mirek";
         //when
         registrationService.register(registrationDataDTO);
-        String username = registrationService.findUserByEmail("czu@wp.pl").getUsername();
+        String username = registrationService.findUserByEmail("mirek@yahoo.com").getUsername();
         //then
         Assert.assertEquals(expectedUsername,username);
     }

@@ -23,7 +23,9 @@ public class Booking {
     @Column(name = "check_out")
     private LocalDate check_out;
     @ManyToOne
+    @JoinColumn(name = "farm_farm_id")
     private Farm farm;
     @ManyToOne
+    @JoinColumn(name = "user_username")
     private User user;
 }

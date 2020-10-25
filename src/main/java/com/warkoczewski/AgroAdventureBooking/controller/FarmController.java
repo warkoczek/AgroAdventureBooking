@@ -1,11 +1,14 @@
 package com.warkoczewski.AgroAdventureBooking.controller;
 
 import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
+import com.warkoczewski.AgroAdventureBooking.model.Farm;
 import com.warkoczewski.AgroAdventureBooking.service.impl.FarmServiceImpl;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
 import com.warkoczewski.AgroAdventureBooking.util.ViewNames;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,14 +24,22 @@ public class FarmController {
     }
 
     @GetMapping(Mappings.HOME)
-    public String getHomePage(){
-        return ViewNames.HOME;
-    }
+    public String getHomePage(){return ViewNames.HOME;}
+
     @GetMapping(Mappings.ALL_FARMS)
-    public ModelAndView showAllFarms(ModelAndView modelAndView){
-        List<DisplayFarmDTO> allFarms = farmService.findAll();
+    public ModelAndView getAllFarms(ModelAndView modelAndView){
+        return showPaginated(1, modelAndView);
+    }
+
+    @GetMapping(Mappings.ALL_FARMS_ID)
+    public ModelAndView showPaginated(@PathVariable("pageNo")int pageNo, ModelAndView modelAndView){
+        Page<DisplayFarmDTO> page = farmService.getPaginated(pageNo, 2);
+
         modelAndView.setViewName("farm/allFarms");
-        modelAndView.addObject("allFarms", allFarms);
+        modelAndView.addObject("currentPage", pageNo);
+        modelAndView.addObject("totalPages", page.getTotalPages());
+        modelAndView.addObject("totalElements", page.getTotalElements());
+        modelAndView.addObject("allFarms", page.getContent());
         return modelAndView;
     }
 
@@ -62,5 +73,6 @@ public class FarmController {
         farmService.deleteFarm(id);
         return ViewNames.FARM_DELETED;
     }
+
 
 }

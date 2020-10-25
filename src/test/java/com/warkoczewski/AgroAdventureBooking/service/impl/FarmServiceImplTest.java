@@ -76,4 +76,16 @@ public class FarmServiceImplTest {
         Assert.assertEquals(expectedSize, actualSize);
 
     }
+
+    @Test
+    void getPaginatedReturnsFarmNamedChickenFarmForFarmIndex0InFirstPage() {
+        //given
+        int pageNo = 1;
+        int pageSize = 2;
+        long expectedTotalElements = 4l;
+        //when
+        long actualTotalElements = sut.getPaginated(pageNo, pageSize).getTotalElements();
+        //then
+        Assert.assertEquals(expectedTotalElements, actualTotalElements);
+    }
 }

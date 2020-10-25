@@ -9,7 +9,13 @@ import com.warkoczewski.AgroAdventureBooking.model.Farm;
 import com.warkoczewski.AgroAdventureBooking.model.Location;
 import com.warkoczewski.AgroAdventureBooking.repository.FarmRepository;
 import com.warkoczewski.AgroAdventureBooking.service.FarmService;
+import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.jaxb.SpringDataJaxb;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -58,6 +64,15 @@ public class FarmServiceImpl implements FarmService {
         address.setFarm(farm);
         location.setFarm(farm);
         return farmRepository.save(farm);
+    }
+
+    @Override
+    public Page<DisplayFarmDTO> getPaginated(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo-1, pageSize);
+        List<DisplayFarmDTO> list = farmRepository.findAll().stream().map(farm -> modelMapper.map(farm,DisplayFarmDTO.class))
+                .collect(Collectors.toList());
+        int listSize = list.size();
+        return new PageImpl<>(list, pageable, listSize);
     }
 
     public void deleteFarm(Long id) {

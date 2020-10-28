@@ -69,10 +69,7 @@ public class FarmServiceImpl implements FarmService {
     @Override
     public Page<DisplayFarmDTO> getPaginated(int pageNo, int pageSize) {
         Pageable pageable = PageRequest.of(pageNo-1, pageSize);
-        List<DisplayFarmDTO> list = farmRepository.findAll().stream().map(farm -> modelMapper.map(farm,DisplayFarmDTO.class))
-                .collect(Collectors.toList());
-        int listSize = list.size();
-        return new PageImpl<>(list, pageable, listSize);
+        return  farmRepository.findAll(pageable).map(farm -> modelMapper.map(farm,DisplayFarmDTO.class));
     }
 
     public void deleteFarm(Long id) {

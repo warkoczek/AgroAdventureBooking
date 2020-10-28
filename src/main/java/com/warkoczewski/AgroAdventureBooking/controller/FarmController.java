@@ -26,21 +26,20 @@ public class FarmController {
     @GetMapping(Mappings.HOME)
     public String getHomePage(){return ViewNames.HOME;}
 
-    @GetMapping(Mappings.ALL_FARMS)
-    public ModelAndView getAllFarms(ModelAndView modelAndView){
-        return showPaginated(1, modelAndView);
+    @GetMapping("/")
+    public String getAllFarms(Model model){
+        return showPaginated(1, model);
     }
 
     @GetMapping(Mappings.ALL_FARMS_ID)
-    public ModelAndView showPaginated(@PathVariable("pageNo")int pageNo, ModelAndView modelAndView){
-        Page<DisplayFarmDTO> page = farmService.getPaginated(pageNo, 2);
-
-        modelAndView.setViewName("farm/allFarms");
-        modelAndView.addObject("currentPage", pageNo);
-        modelAndView.addObject("totalPages", page.getTotalPages());
-        modelAndView.addObject("totalElements", page.getTotalElements());
-        modelAndView.addObject("allFarms", page.getContent());
-        return modelAndView;
+    public String showPaginated(@PathVariable(value = "pageNo")int pageNo,Model model){
+        int pageSize = 2;
+        Page<DisplayFarmDTO> page = farmService.getPaginated(pageNo, pageSize);
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalElements", page.getTotalElements());
+        model.addAttribute("allFarms", page.getContent());
+        return ViewNames.ALL_FARMS;
     }
 
     @GetMapping(Mappings.SEARCH_FARMS)

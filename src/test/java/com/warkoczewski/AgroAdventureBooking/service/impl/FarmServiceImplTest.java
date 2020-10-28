@@ -78,7 +78,18 @@ public class FarmServiceImplTest {
     }
 
     @Test
-    void getPaginatedReturnsFarmNamedChickenFarmForFarmIndex0InFirstPage() {
+    void getPaginatedReturnsTotalPages2ForTotalElements4AndPageSize2() {
+        //given
+        int pageNo = 1;
+        int pageSize = 2;
+        long expectedTotalPages = 2l;
+        //when
+        long actualTotalPages = sut.getPaginated(pageNo, pageSize).getTotalPages();
+        //then
+        Assert.assertEquals(expectedTotalPages, actualTotalPages);
+    }
+    @Test
+    void getPaginatedReturnsTotalElements4ForListSizeFor() {
         //given
         int pageNo = 1;
         int pageSize = 2;

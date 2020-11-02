@@ -21,7 +21,7 @@
                     class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#" th:href="@{/home/homePage}">Home</a>
-            <a class="navbar-brand" href="#" th:href="@{/farm}">Farms</a>
+            <a class="navbar-brand" href="#" th:href="@{/}">Farms</a>
             <a class="navbar-brand" href="#" th:href="@{/register/registrationForm}">Register</a>
             <a class="navbar-brand" href="#" th:href="@{/register/login}">Log in</a>
         </div>
@@ -59,7 +59,7 @@
             </div>
             <div class="row col-sm-1">
                 <span th:each="i: ${#numbers.sequence(1,totalPages)}">
-                    <a th:if="${currentPage != i}" th:href="@{'farm/allFarms/' + ${i}} ">[[${i}]]</a>
+                    <a th:if="${currentPage != i}" th:href="@{'farm/allFarms/' + ${i}}">[[${i}]]</a>
                     <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
                 </span>
             </div>

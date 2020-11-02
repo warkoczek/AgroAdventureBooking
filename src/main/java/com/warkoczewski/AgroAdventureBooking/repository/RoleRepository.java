@@ -1,6 +1,6 @@
 package com.warkoczewski.AgroAdventureBooking.repository;
 
-import com.warkoczewski.AgroAdventureBooking.model.Role;
+import com.warkoczewski.AgroAdventureBooking.model.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

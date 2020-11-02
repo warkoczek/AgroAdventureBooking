@@ -1,5 +1,7 @@
 package com.warkoczewski.AgroAdventureBooking.model;
 
+import com.warkoczewski.AgroAdventureBooking.model.entity.Booking;
+import com.warkoczewski.AgroAdventureBooking.model.entity.Role;
 import lombok.*;
 
 import javax.persistence.*;

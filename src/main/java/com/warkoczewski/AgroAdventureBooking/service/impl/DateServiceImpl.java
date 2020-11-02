@@ -1,6 +1,6 @@
 package com.warkoczewski.AgroAdventureBooking.service.impl;
 import com.warkoczewski.AgroAdventureBooking.dto.BookingDTO;
-import com.warkoczewski.AgroAdventureBooking.model.Date;
+import com.warkoczewski.AgroAdventureBooking.model.entity.Date;
 import com.warkoczewski.AgroAdventureBooking.repository.DateRepository;
 import com.warkoczewski.AgroAdventureBooking.service.DateService;
 import org.springframework.stereotype.Service;

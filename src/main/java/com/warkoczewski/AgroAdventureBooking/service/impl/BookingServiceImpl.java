@@ -1,9 +1,8 @@
 package com.warkoczewski.AgroAdventureBooking.service.impl;
 
 import com.warkoczewski.AgroAdventureBooking.dto.BookingDTO;
-import com.warkoczewski.AgroAdventureBooking.exception.BookingDTODoesNotExistException;
 import com.warkoczewski.AgroAdventureBooking.exception.BookingDatesOverlappingException;
-import com.warkoczewski.AgroAdventureBooking.model.Booking;
+import com.warkoczewski.AgroAdventureBooking.model.entity.Booking;
 import com.warkoczewski.AgroAdventureBooking.repository.BookingRepository;
 import com.warkoczewski.AgroAdventureBooking.repository.FarmRepository;
 import com.warkoczewski.AgroAdventureBooking.repository.UserRepository;

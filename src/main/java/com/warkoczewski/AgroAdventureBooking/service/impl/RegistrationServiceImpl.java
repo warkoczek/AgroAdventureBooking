@@ -2,7 +2,7 @@ package com.warkoczewski.AgroAdventureBooking.service.impl;
 
 import com.warkoczewski.AgroAdventureBooking.dto.RegistrationDataDTO;
 
-import com.warkoczewski.AgroAdventureBooking.model.Role;
+import com.warkoczewski.AgroAdventureBooking.model.entity.Role;
 import com.warkoczewski.AgroAdventureBooking.model.User;
 import com.warkoczewski.AgroAdventureBooking.repository.RoleRepository;
 import com.warkoczewski.AgroAdventureBooking.repository.UserRepository;
@@ -13,9 +13,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 @Slf4j

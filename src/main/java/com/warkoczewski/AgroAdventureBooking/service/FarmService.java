@@ -5,6 +5,7 @@ import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
 import com.warkoczewski.AgroAdventureBooking.dto.FarmDTO;
 import com.warkoczewski.AgroAdventureBooking.dto.LocationDTO;
 import com.warkoczewski.AgroAdventureBooking.model.entity.Farm;
+import com.warkoczewski.AgroAdventureBooking.model.presentation.FarmPage;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -17,6 +18,6 @@ public interface FarmService {
     List<DisplayFarmDTO> showFarmsByNamePhrase(String phrase);
     void deleteFarm(Long id);
     Farm addFarm(FarmDTO farmDTO, AddressDTO addressDTO, LocationDTO locationDTO);
-    Page<DisplayFarmDTO> getPaginated(int pageNo, int pageSize);
+    Page<DisplayFarmDTO> getPaginated(FarmPage farmPage);
 
 }

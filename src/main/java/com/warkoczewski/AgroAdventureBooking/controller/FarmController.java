@@ -1,6 +1,7 @@
 package com.warkoczewski.AgroAdventureBooking.controller;
 
 import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
+import com.warkoczewski.AgroAdventureBooking.model.presentation.FarmPage;
 import com.warkoczewski.AgroAdventureBooking.service.impl.FarmServiceImpl;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
 import com.warkoczewski.AgroAdventureBooking.util.ViewNames;
@@ -33,7 +34,10 @@ public class FarmController {
     @GetMapping(Mappings.ALL_FARMS)
     public String showPaginated(@PathVariable(value = "pageNo")int pageNo,Model model){
         int pageSize = 2;
-        Page<DisplayFarmDTO> page = farmService.getPaginated(pageNo, pageSize);
+        FarmPage farmPage = new FarmPage();
+        farmPage.setPageNumber(pageNo);
+        farmPage.setPageSize(pageSize);
+        Page<DisplayFarmDTO> page = farmService.getPaginated(farmPage);
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", page.getTotalPages());
         model.addAttribute("totalElements", page.getTotalElements());

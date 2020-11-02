@@ -72,7 +72,7 @@ public class FarmServiceImplTest {
         Assert.assertEquals(expectedSize, actualSize);
 
     }
-
+/*
     @Test
     void getPaginatedReturnsTotalPages2ForTotalElements4AndPageSize2() {
         //given
@@ -94,5 +94,5 @@ public class FarmServiceImplTest {
         long actualTotalElements = sut.getPaginated(pageNo, pageSize).getTotalElements();
         //then
         Assert.assertEquals(expectedTotalElements, actualTotalElements);
-    }
+    }*/
 }

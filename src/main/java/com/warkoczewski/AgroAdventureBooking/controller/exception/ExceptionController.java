@@ -1,4 +1,4 @@
-package com.warkoczewski.AgroAdventureBooking.controller;
+package com.warkoczewski.AgroAdventureBooking.controller.exception;
 
 import com.warkoczewski.AgroAdventureBooking.exception.FarmNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;

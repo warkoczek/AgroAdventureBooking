@@ -1,6 +1,6 @@
 package com.warkoczewski.AgroAdventureBooking.repository;
 
-import com.warkoczewski.AgroAdventureBooking.model.Location;
+import com.warkoczewski.AgroAdventureBooking.model.entity.Location;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

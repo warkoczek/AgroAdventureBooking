@@ -4,8 +4,6 @@ import com.warkoczewski.AgroAdventureBooking.dto.AddressDTO;
 import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
 import com.warkoczewski.AgroAdventureBooking.dto.FarmDTO;
 import com.warkoczewski.AgroAdventureBooking.dto.LocationDTO;
-import com.warkoczewski.AgroAdventureBooking.model.Farm;
-import com.warkoczewski.AgroAdventureBooking.repository.FarmRepository;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,9 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.validation.constraints.AssertTrue;
 import java.util.List;
-import java.util.Optional;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
@@ -76,4 +72,27 @@ public class FarmServiceImplTest {
         Assert.assertEquals(expectedSize, actualSize);
 
     }
+/*
+    @Test
+    void getPaginatedReturnsTotalPages2ForTotalElements4AndPageSize2() {
+        //given
+        int pageNo = 1;
+        int pageSize = 2;
+        long expectedTotalPages = 2l;
+        //when
+        long actualTotalPages = sut.getPaginated(pageNo, pageSize).getTotalPages();
+        //then
+        Assert.assertEquals(expectedTotalPages, actualTotalPages);
+    }
+    @Test
+    void getPaginatedReturnsTotalElements4ForListSizeFor() {
+        //given
+        int pageNo = 1;
+        int pageSize = 2;
+        long expectedTotalElements = 4l;
+        //when
+        long actualTotalElements = sut.getPaginated(pageNo, pageSize).getTotalElements();
+        //then
+        Assert.assertEquals(expectedTotalElements, actualTotalElements);
+    }*/
 }

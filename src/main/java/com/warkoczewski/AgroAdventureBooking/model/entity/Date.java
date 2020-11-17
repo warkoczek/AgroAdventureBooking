@@ -1,4 +1,4 @@
-package com.warkoczewski.AgroAdventureBooking.model;
+package com.warkoczewski.AgroAdventureBooking.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

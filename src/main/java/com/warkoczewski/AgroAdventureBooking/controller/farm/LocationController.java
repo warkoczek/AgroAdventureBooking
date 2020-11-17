@@ -1,7 +1,6 @@
-package com.warkoczewski.AgroAdventureBooking.controller;
+package com.warkoczewski.AgroAdventureBooking.controller.farm;
 
 import com.warkoczewski.AgroAdventureBooking.dto.LocationDTO;
-import com.warkoczewski.AgroAdventureBooking.model.Location;
 import com.warkoczewski.AgroAdventureBooking.service.impl.LocationServiceImpl;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
 import com.warkoczewski.AgroAdventureBooking.util.ViewNames;

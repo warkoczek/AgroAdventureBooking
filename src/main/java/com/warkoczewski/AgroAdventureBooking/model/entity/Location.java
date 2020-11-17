@@ -1,13 +1,12 @@
-package com.warkoczewski.AgroAdventureBooking.model;
+package com.warkoczewski.AgroAdventureBooking.model.entity;
 
 import com.sun.istack.NotNull;
+import com.warkoczewski.AgroAdventureBooking.model.entity.Farm;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @NoArgsConstructor
 @AllArgsConstructor

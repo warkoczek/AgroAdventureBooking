@@ -4,12 +4,17 @@ import com.warkoczewski.AgroAdventureBooking.dto.AddressDTO;
 import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
 import com.warkoczewski.AgroAdventureBooking.dto.FarmDTO;
 import com.warkoczewski.AgroAdventureBooking.dto.LocationDTO;
-import com.warkoczewski.AgroAdventureBooking.model.Address;
-import com.warkoczewski.AgroAdventureBooking.model.Farm;
-import com.warkoczewski.AgroAdventureBooking.model.Location;
+import com.warkoczewski.AgroAdventureBooking.model.entity.Address;
+import com.warkoczewski.AgroAdventureBooking.model.entity.Farm;
+import com.warkoczewski.AgroAdventureBooking.model.entity.Location;
+import com.warkoczewski.AgroAdventureBooking.model.presentation.FarmPage;
 import com.warkoczewski.AgroAdventureBooking.repository.FarmRepository;
 import com.warkoczewski.AgroAdventureBooking.service.FarmService;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -58,6 +63,12 @@ public class FarmServiceImpl implements FarmService {
         address.setFarm(farm);
         location.setFarm(farm);
         return farmRepository.save(farm);
+    }
+
+    @Override
+    public Page<DisplayFarmDTO> getPaginated(FarmPage farmPage) {
+        Pageable pageable = PageRequest.of(farmPage.getPageNumber(), farmPage.getPageSize());
+        return  farmRepository.findAll(pageable).map(farm -> modelMapper.map(farm,DisplayFarmDTO.class));
     }
 
     public void deleteFarm(Long id) {

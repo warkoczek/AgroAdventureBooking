@@ -1,14 +1,12 @@
-package com.warkoczewski.AgroAdventureBooking.model;
+package com.warkoczewski.AgroAdventureBooking.model.entity;
 
+import com.warkoczewski.AgroAdventureBooking.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Data

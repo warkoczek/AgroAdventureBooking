@@ -1,11 +1,14 @@
-package com.warkoczewski.AgroAdventureBooking.controller;
+package com.warkoczewski.AgroAdventureBooking.controller.farm;
 
 import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
+import com.warkoczewski.AgroAdventureBooking.model.presentation.FarmPage;
 import com.warkoczewski.AgroAdventureBooking.service.impl.FarmServiceImpl;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
 import com.warkoczewski.AgroAdventureBooking.util.ViewNames;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,15 +24,25 @@ public class FarmController {
     }
 
     @GetMapping(Mappings.HOME)
-    public String getHomePage(){
-        return ViewNames.HOME;
+    public String getHomePage(){return ViewNames.HOME;}
+
+    @GetMapping("/")
+    public String getAllFarms(Model model){
+        return showPaginated(1, model);
     }
+
     @GetMapping(Mappings.ALL_FARMS)
-    public ModelAndView showAllFarms(ModelAndView modelAndView){
-        List<DisplayFarmDTO> allFarms = farmService.findAll();
-        modelAndView.setViewName("farm/allFarms");
-        modelAndView.addObject("allFarms", allFarms);
-        return modelAndView;
+    public String showPaginated(@PathVariable(value = "pageNo")int pageNo,Model model){
+        int pageSize = 2;
+        FarmPage farmPage = new FarmPage();
+        farmPage.setPageNumber(pageNo);
+        farmPage.setPageSize(pageSize);
+        Page<DisplayFarmDTO> page = farmService.getPaginated(farmPage);
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalElements", page.getTotalElements());
+        model.addAttribute("allFarms", page.getContent());
+        return ViewNames.ALL_FARMS;
     }
 
     @GetMapping(Mappings.SEARCH_FARMS)
@@ -62,5 +75,6 @@ public class FarmController {
         farmService.deleteFarm(id);
         return ViewNames.FARM_DELETED;
     }
+
 
 }

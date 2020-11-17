@@ -2,9 +2,8 @@ package com.warkoczewski.AgroAdventureBooking.service.impl;
 
 import com.warkoczewski.AgroAdventureBooking.dto.BookingDTO;
 import com.warkoczewski.AgroAdventureBooking.exception.BookingDatesOverlappingException;
-import com.warkoczewski.AgroAdventureBooking.model.Booking;
+import com.warkoczewski.AgroAdventureBooking.model.entity.Booking;
 import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -11,7 +11,7 @@ public final  class Mappings {
     public static final String REGISTRATION_FORM = "register/registrationForm";
     public static final String LOGIN = "register/login";
     public static final String HOME = "home/homePage";
-    public static final String ALL_FARMS = "farm/allFarms";
+    public static final String ALL_FARMS = "farm/allFarms/{pageNo}";
     public static final String BOOKING_PAGE = "booking/bookingPage";
     public static final String DELETE_BOOKING = "booking/delete/{booking_Id}";
     public static final String FARM_BOOKED = "booking/farmBooked";

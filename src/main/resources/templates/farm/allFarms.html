@@ -21,7 +21,7 @@
                     class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#" th:href="@{/home/homePage}">Home</a>
-            <a class="navbar-brand" href="#" th:href="@{/farm/allFarms}">Farms</a>
+            <a class="navbar-brand" href="#" th:href="@{/}">Farms</a>
             <a class="navbar-brand" href="#" th:href="@{/register/registrationForm}">Register</a>
             <a class="navbar-brand" href="#" th:href="@{/register/login}">Log in</a>
         </div>
@@ -43,7 +43,7 @@
                 <th>Image URL</th>
             </tr>
             <tr th:each="farm : ${allFarms}">
-                <td th:text="${farm.name}"></td>
+                <td th:text="${farm}"></td>
                 <td th:text="${farm.description}"></td>
                 <td th:if="${farm.available}">Available</td>
                 <td th:unless="${farm.available}">Not Available</td>
@@ -51,6 +51,27 @@
                 <td></td>
             </tr>
         </table>
+    </div>
+    <div th:if="${totalPages > 1}">
+        <div class="row col-sm-10">
+            <div class="row col-sm-2">
+                Total Rows: [[${totalElements}]]
+            </div>
+            <div class="row col-sm-1">
+                <span th:each="i: ${#numbers.sequence(1,totalPages)}">
+                    <a th:if="${currentPage != i}" th:href="@{'farm/allFarms/' + ${i}}">[[${i}]]</a>
+                    <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+                </span>
+            </div>
+            <div class="row col-sm-1">
+                <a th:if="${currentPage < totalPages}" th:href="@{'farm/allFarms/' + ${currentPage + 1}}">Next</a>
+                <span th:unless="${currentPage < totalPages}">Next</span>
+            </div>
+            <div class="row col-sm-1">
+                <a th:if="${currentPage < totalPages}" th:href="@{'farm/allFarms/' + ${totalPages}}">Last</a>
+                <span th:unless="${currentPage < totalPages}">Last</span>
+            </div>
+        </div>
     </div>
 </div>
 

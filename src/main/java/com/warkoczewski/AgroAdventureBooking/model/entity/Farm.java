@@ -1,4 +1,4 @@
-package com.warkoczewski.AgroAdventureBooking.model;
+package com.warkoczewski.AgroAdventureBooking.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,7 +8,6 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor

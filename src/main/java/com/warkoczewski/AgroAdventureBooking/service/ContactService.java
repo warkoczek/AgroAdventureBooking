@@ -1,5 +1,7 @@
 package com.warkoczewski.AgroAdventureBooking.service;
 
+import com.warkoczewski.AgroAdventureBooking.dto.ContactDTO;
+
 public interface ContactService {
-    boolean sendEmail();
+    void sendEmail(ContactDTO contactDTO);
 }

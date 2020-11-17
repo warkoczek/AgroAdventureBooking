@@ -1,4 +1,4 @@
-package com.warkoczewski.AgroAdventureBooking.controller;
+package com.warkoczewski.AgroAdventureBooking.controller.user;
 
 import com.warkoczewski.AgroAdventureBooking.dto.LoginDataDTO;
 import com.warkoczewski.AgroAdventureBooking.dto.RegistrationDataDTO;

@@ -1,4 +1,4 @@
-package com.warkoczewski.AgroAdventureBooking.controller;
+package com.warkoczewski.AgroAdventureBooking.controller.farm;
 
 import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
 import com.warkoczewski.AgroAdventureBooking.model.presentation.FarmPage;

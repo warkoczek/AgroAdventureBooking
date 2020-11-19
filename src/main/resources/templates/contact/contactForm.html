@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:class="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/head :: headFragment}">
+    <meta charset="UTF-8">
+    <title>ContactForm</title>
+</head>
+<body>
+<nav th:insert="~{fragments/head :: mainNavFragment}"></nav><br><br><br>
+
+<!-- create html contactForm (header) -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <!-- success message -->
+            <div th:if="${param.success}">
+                <div class="alert alert-info">Your message has been sent successfully</div>
+            </div>
+            <h1>Contact Form</h1>
+            <form th:action="@{/contact/contactForm}" method="post" th:object="${contactDTO}">
+                <div class="form-group">
+                    <label class="control-label" for="fullName"
+                    >Full Name</label><input id="fullName" class="form-control" type="text" th:field="*{fullName}" required autofocus="autofocus"/>
+                    <span th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Incorrect Full Name</span>
+                </div>
+
+                <div class="control-label" for="email">
+                    <label>Email</label><input id="email" class="form-control" type="email" th:field="*{emailFrom}" required autofocus="autofocus"/>
+                    <span th:if="${#fields.hasErrors()}" th:errors="*{emailFrom}">Incorrect email</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="subject"
+                    >Subject</label><input id="subject" class="form-control" type="text" th:field="*{subject}" required autofocus="autofocus"/>
+                    <span th:if="${#fields.hasErrors()}" th:errors="*{subject}">Incorrect subject</span>
+                </div>
+                <div class="control-label" for="text">
+                    <label>Text</label>
+                    <textarea id="content" rows="5" class="form-control" type="text" th:field="*{text}" required></textarea>
+                    <span th:if="${#fields.hasErrors()}" th:errors="*{text}">Incorrect password</span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Send</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+<footer th:replace="~{fragments/footer :: footerFragment}">Made by Adam Warkoczewski</footer>
+</body>
+</html>

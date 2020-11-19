@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:class="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/head :: headFragment}">
+    <meta charset="UTF-8">
+    <title>ContactForm</title>
+</head>
+<body>
+<nav th:insert="~{fragments/head :: mainNavFragment}"></nav><br><br><br>
+
+<div class="align-content-center">
+    <p th:text="${message}"></p>
+</div>
+<footer th:replace="~{fragments/footer :: footerFragment}">Made by Adam Warkoczewski</footer>
+</body>
+</html>

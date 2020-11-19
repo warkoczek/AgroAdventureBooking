@@ -22,16 +22,8 @@ public class BeanConfiguration {
     }
     @Bean
     public JavaMailSenderImpl javaMailSender(){
-        JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
-        javaMailSender.setHost(emailConfiguration.getHost());
-        javaMailSender.setPort(emailConfiguration.getPort());
-        javaMailSender.setUsername(emailConfiguration.getUsername());
-        javaMailSender.setPassword(emailConfiguration.getPassword());
-        return javaMailSender;
+        return new JavaMailSenderImpl();
     }
-    @Bean
-    public SimpleMailMessage simpleMailMessage(){
-        return new SimpleMailMessage();
-    }
+
 
 }

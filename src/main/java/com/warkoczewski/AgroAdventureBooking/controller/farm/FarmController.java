@@ -26,13 +26,13 @@ public class FarmController {
     @GetMapping(Mappings.HOME)
     public String getHomePage(){return ViewNames.HOME;}
 
-    @GetMapping("/")
+   /* @GetMapping
     public String getAllFarms(Model model){
         return showPaginated(1, model);
-    }
+    }*/
 
     @GetMapping(Mappings.ALL_FARMS)
-    public String showPaginated(@PathVariable(value = "pageNo")int pageNo,Model model){
+    public String showPaginated(@RequestParam(defaultValue = "1", value = "pageNo")int pageNo,Model model){
         int pageSize = 2;
         FarmPage farmPage = new FarmPage();
         farmPage.setPageNumber(pageNo);

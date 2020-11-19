@@ -15,6 +15,7 @@ public final class ViewNames {
     public static final String FARM_DELETED = "farm/farmDeleted";
     public static final String BOOKING_NOT_POSSIBLE = "booking/bookingNotPossible";
     public static final String CONTACT_US = "contact/contactForm";
+    public static final String CONTACT_SUCCESS = "contact/contactSuccess";
 
 
     public ViewNames() {

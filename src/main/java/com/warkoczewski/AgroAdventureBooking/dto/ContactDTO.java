@@ -18,5 +18,6 @@ public class ContactDTO {
     private String emailFrom;
     @NotBlank
     private String subject;
+    @NotBlank
     private String text;
 }

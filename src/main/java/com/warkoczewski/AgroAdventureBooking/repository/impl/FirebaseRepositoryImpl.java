@@ -25,7 +25,7 @@ public class FirebaseRepositoryImpl implements FirebaseRepository {
     }
 
     @Override
-    @EventListener(ApplicationReadyEvent.class)
+    //@EventListener(ApplicationReadyEvent.class)
     public void add() throws IOException, ExecutionException, InterruptedException {
         docData.put("name", "Los Angels");
         docData.put("state", "CA");
@@ -37,4 +37,5 @@ public class FirebaseRepositoryImpl implements FirebaseRepository {
         System.out.println(future.get().getUpdateTime());
         System.out.println("Hi Firebase");
     }
+
 }

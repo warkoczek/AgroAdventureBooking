@@ -30,7 +30,7 @@
 <section class="farms" th:each="farm : ${farms}">
     <div class="farm-info">
         <div style="color: black" th:text="${farm.name}"></div>
-        <div style="color: green" th:if="${farm.available}">Available<br><a href="/" th:href="@{/booking/bookingPage}">Book</a></div>
+        <div style="color: green" th:if="${farm.available}">Available<br><a href="/" th:href="@{/booking/bookingPage/{name}(name=${farm.name})}">Book</a></div>
         <div style="color: red" th:unless="${farm.available}"> Not Available<br><a href="/" th:href="@{/booking/bookingNotPossible}">Book</a></div>
     </div><br>
 </section>

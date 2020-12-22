@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DivisibleNumbers {
-    @EventListener(ApplicationReadyEvent.class)
     public void printAndMarkDivisibleNumbers(){
         for(int i = 1; i <=100; i++){
             if(i %3 == 0){

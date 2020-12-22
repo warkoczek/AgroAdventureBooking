@@ -1,6 +1,7 @@
 package com.warkoczewski.AgroAdventureBooking.controller.booking;
 
 import com.warkoczewski.AgroAdventureBooking.dto.BookingDTO;
+import com.warkoczewski.AgroAdventureBooking.dto.DisplayFarmDTO;
 import com.warkoczewski.AgroAdventureBooking.service.impl.FarmServiceImpl;
 import com.warkoczewski.AgroAdventureBooking.service.impl.BookingServiceImpl;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
@@ -33,9 +34,11 @@ public class BookingController {
     }
 
 
-    @GetMapping(Mappings.BOOKING_PAGE)
-    public String getBookingPage(Model model){
+    @GetMapping(Mappings.BOOKING_PAGE_FARM_NAME)
+    public String getBookingPage(@PathVariable(value = "name") String name, Model model){
+        DisplayFarmDTO displayFarmDTO = farmService.showFarmByName(name);
         model.addAttribute("bookingDTO", new BookingDTO());
+        model.addAttribute("displayFarmDTO", displayFarmDTO);
         return ViewNames.BOOKING_PAGE;
     }
 

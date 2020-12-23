@@ -37,8 +37,9 @@ public class BookingController {
     @GetMapping(Mappings.BOOKING_PAGE_FARM_NAME)
     public String getBookingPage(@PathVariable(value = "name") String name, Model model){
         DisplayFarmDTO displayFarmDTO = farmService.showFarmByName(name);
-        model.addAttribute("bookingDTO", new BookingDTO());
-        model.addAttribute("displayFarmDTO", displayFarmDTO);
+        BookingDTO bookingDTO = new BookingDTO();
+        bookingDTO.setFarmName(displayFarmDTO.getName());
+        model.addAttribute("bookingDTO", bookingDTO);
         return ViewNames.BOOKING_PAGE;
     }
 

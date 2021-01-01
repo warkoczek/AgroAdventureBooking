@@ -1,6 +1,9 @@
 package com.warkoczewski.AgroAdventureBooking.controller.farm;
 
+import com.warkoczewski.AgroAdventureBooking.dto.FarmDTO;
 import com.warkoczewski.AgroAdventureBooking.dto.LocationDTO;
+import com.warkoczewski.AgroAdventureBooking.model.entity.Farm;
+import com.warkoczewski.AgroAdventureBooking.model.entity.Location;
 import com.warkoczewski.AgroAdventureBooking.service.impl.LocationServiceImpl;
 import com.warkoczewski.AgroAdventureBooking.util.Mappings;
 import com.warkoczewski.AgroAdventureBooking.util.ViewNames;
@@ -23,7 +26,7 @@ public class LocationController {
 /*
     @GetMapping(Mappings.MARKER)
     public String getMap(Model model){
-        model.addAttribute("point", new Location(1L, 54.51, 18.53, "Hello Wild Bull"));
+        model.addAttribute("point", new Location(1L, 54.51, 18.53,"Hello"));
         return ViewNames.MAP_TEST_MARKER;
     }*/
 

@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
-@Repository
+
 public class FirebaseRepositoryImpl implements FirebaseRepository {
     private final FirebaseDB firebaseDB;
     private Map<String, Object> docData;

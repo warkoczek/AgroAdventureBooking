@@ -6,7 +6,6 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
-
 @Configuration
 public class SecurityConfiguration{
 
@@ -15,7 +14,6 @@ public class SecurityConfiguration{
     public SecurityConfiguration(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-
 
     @Bean
     PasswordEncoder passwordEncoder(){return PasswordEncoderFactories.createDelegatingPasswordEncoder();}

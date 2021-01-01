@@ -34,7 +34,7 @@ public class LocationController {
     }
 
     @GetMapping(Mappings.CREATE_LOCATION)
-        public String getLocationCreationPage(Model model){
+        public String getCreateLocationPage(Model model){
             model.addAttribute("locationData", new LocationDTO());
             return "createLocation";
         }

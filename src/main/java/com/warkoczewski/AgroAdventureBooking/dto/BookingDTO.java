@@ -31,4 +31,5 @@ public class BookingDTO {
     private String farmName;
     @NotBlank(message = "Fill in this field, please")
     private String username;
+
 }
